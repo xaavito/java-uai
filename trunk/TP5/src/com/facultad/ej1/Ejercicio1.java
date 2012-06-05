@@ -1,6 +1,6 @@
 package com.facultad.ej1;
 
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane; 
 
 public class Ejercicio1 {
 
