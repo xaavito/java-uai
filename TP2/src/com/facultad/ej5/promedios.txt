@@ -1,0 +1,2 @@
+Promedio numeros pares: 2277
+Promedio numeros impares: 4
