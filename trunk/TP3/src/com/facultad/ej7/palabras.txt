@@ -1,0 +1,8 @@
+coco
+zapallo
+mesa
+computadora
+mate
+mouse
+reloj
+television
