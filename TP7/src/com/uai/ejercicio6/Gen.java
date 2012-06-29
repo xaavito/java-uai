@@ -42,7 +42,7 @@ public class Gen {
 	
 	public void pushNucleotidos() {
 		for (int i = 0; i < getCant(); i++) {
-			nucleotidos[i] = asignar((int)Math.random()*4);
+			nucleotidos[i] = asignar((int)(Math.random()*4));
 		}
 	}
 	
@@ -57,11 +57,10 @@ public class Gen {
 			case 3: {
 				return Nucleotido.G;
 			}
-			case 4: {
+			default: {
 				return Nucleotido.T;
 			}
 		}
-		return null;
 	}
 	
 	public String asString() {
