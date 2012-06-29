@@ -14,7 +14,8 @@ public class GenomaHumano {
 	public Gen[] dameIndividuo() {
 		genes = new Gen[50000];
 		for (int i = 0; i < 50000; i++) {
-			gen = new Gen(i,(int)Math.random()*10);
+			int valor = (int)(Math.random()*10);
+			gen = new Gen(i,valor==0?1:valor);
 			genes[i] = gen;
 		}
 		return genes;

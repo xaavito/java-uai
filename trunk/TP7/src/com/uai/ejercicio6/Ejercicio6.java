@@ -19,5 +19,8 @@ public class Ejercicio6 {
 			System.out.println("-------");
 			System.out.println(gen.asString());
 		}
+		
+		System.out.println("+++++++++++++++");
+		System.out.println(genesIguales.size());
 	}
 }
