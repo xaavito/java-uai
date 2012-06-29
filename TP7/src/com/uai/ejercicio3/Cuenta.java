@@ -8,7 +8,7 @@ public class Cuenta {
 	
 	public Cuenta(Cliente nuevoCliente) {
 		this.cliente = nuevoCliente;
-		this.cliente.setCuenta(this);
+		this.cliente.addCuenta(this);
 	}
 	
 	public void depositar(float monto) {

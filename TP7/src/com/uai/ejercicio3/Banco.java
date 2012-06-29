@@ -8,6 +8,7 @@ public class Banco {
 	private float saldoTotal = 0;
 	
 	public float getSaldoTotal() {
+		saldoTotal = 0;
 		for (Cuenta cuenta : cuentas) {
 			saldoTotal += cuenta.getSaldo();
 		}
