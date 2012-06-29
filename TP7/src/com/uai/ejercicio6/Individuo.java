@@ -6,10 +6,8 @@ import java.util.List;
 public class Individuo {
 
 	private Gen[] misGenes;
-	private GenomaHumano miFactory;
-	
 	public Individuo(){
-		this.setMisGenes(miFactory.getInstance().dameIndividuo());
+		this.setMisGenes(GenomaHumano.getInstance().dameIndividuo());
 	}
 
 	public Gen[] getMisGenes() {
