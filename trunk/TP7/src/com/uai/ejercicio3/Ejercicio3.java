@@ -27,15 +27,14 @@ public class Ejercicio3 {
 		chorroBank.pushCuenta(cuentaComun);
 		
 		Assert.assertEquals(chorroBank.getSaldoTotal(), Float.valueOf(0));
-		
-		clienteComun.getCuenta().depositar(600);
-		
+		//System.out.println("-----------" + chorroBank.getSaldoTotal());
+		clienteComun.getCuenta(1).depositar(600);
+		//System.out.println("-----------" + chorroBank.getSaldoTotal());
 		Assert.assertEquals(chorroBank.getSaldoTotal(), Float.valueOf(594));
-		
-		clienteVipInterior.getCuenta().depositar(600);
-		
+		//System.out.println("-----------" + chorroBank.getSaldoTotal());
+		clienteVipInterior.getCuenta(1).depositar(600);
+		//System.out.println("-----------" + chorroBank.getSaldoTotal());
 		Assert.assertEquals(chorroBank.getSaldoTotal(), Float.valueOf(1194));
+		//System.out.println("-----------" + chorroBank.getSaldoTotal());
 	}
-	
-
 }

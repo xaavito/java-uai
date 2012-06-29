@@ -16,8 +16,10 @@ public class Agenda {
 		agregarContacto(new Contacto(nom, ape, tel, email));
 	}
 	
-	public void crearGrupo(String nom) {
-		grupos.add(new Grupo(nom));
+	public Grupo crearGrupo(String nom) {
+		Grupo grupo = new Grupo(nom);
+		grupos.add(grupo);
+		return grupo;
 	}
 	
 	public void borrarGrupo(Grupo grupo) {
@@ -34,28 +36,43 @@ public class Agenda {
 	
 	public void borrarContacto(Contacto contacto){
 		contactos.remove(contacto);
+		
+		for (Grupo grups : grupos) {
+			for (Contacto cont : grups.getContactos()) {
+				if(cont.equals(contacto)) {
+					grups.borrar(contacto);
+				}
+			}
+		}
 	}
 	
 	public void setearNombre(Contacto contacto, String nom) {
-		findContacto(contacto).setNombre(nom);
+		findContacto(contacto.getApellido()).setNombre(nom);
 	}
 	
 	public void setearApellido(Contacto contacto, String ape) {
-		findContacto(contacto).setApellido(ape);
+		findContacto(contacto.getApellido()).setApellido(ape);
 	}
 	
 	public void setearTelefono(Contacto contacto, Long tel) {
-		findContacto(contacto).setTelefono(tel);
+		findContacto(contacto.getApellido()).setTelefono(tel);
 	}
 	
 	public void setearEmail(Contacto contacto, String email) {
-		findContacto(contacto).setEmail(email);
+		findContacto(contacto.getApellido()).setEmail(email);
 	}
 	
-	private Contacto findContacto(Contacto contacto) {
+	public Contacto findContacto(String apellido) {
 		for (Contacto iterable_element : contactos) {
-			if (iterable_element.equals(contacto)) {
+			if (iterable_element.getApellido().equals(apellido)) {
 				return iterable_element;
+			}
+		}
+		for (Grupo grups : grupos) {
+			for (Contacto cont : grups.getContactos()) {
+				if(cont.getApellido().equals(apellido)) {
+					return cont;
+				}
 			}
 		}
 		return null;
@@ -78,7 +95,7 @@ public class Agenda {
 		}
 		return null;
 	}
-
+	
 	public ArrayList<Grupo> getGrupos() {
 		return grupos;
 	}

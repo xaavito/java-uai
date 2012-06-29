@@ -3,7 +3,12 @@ package com.uai.ejercicio3;
 public abstract class Cliente {
 
 	private int monto;
-	private Cuenta cuenta;
+	private int numCuentas = 0;
+	protected Cuenta[] cuentas;
+	
+	public Cliente() {
+		cuentas = new Cuenta[3];
+	}
 
 	public void setMonto(int monto) {
 		this.monto = monto;
@@ -13,11 +18,11 @@ public abstract class Cliente {
 		return this.monto;
 	}
 
-	public void setCuenta(Cuenta cuenta) {
-		this.cuenta = cuenta;
+	public void addCuenta(Cuenta cuenta) {
+		cuentas[numCuentas++] = cuenta;
 	}
 
-	public Cuenta getCuenta() {
-		return cuenta;
+	public Cuenta getCuenta(int indice) {
+		return cuentas[indice-1];
 	}
 }
