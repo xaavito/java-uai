@@ -6,6 +6,7 @@ public class Caja {
 
 	public float facturar(Chango chango)
 	{
+		
 		float monto = 0;
 		for (ProductoDeVenta producto : chango.getProductos()) {
 			monto += producto.getPrecioVenta();

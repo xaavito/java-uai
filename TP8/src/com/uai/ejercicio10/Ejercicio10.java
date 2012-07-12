@@ -1,8 +1,13 @@
 package com.uai.ejercicio10;
 
+import junit.framework.Assert;
+
+import org.junit.Test;
+
 public class Ejercicio10 {
 	
-	public static void main(String[] args) {
+	@Test
+	public void testPepe (){  
 	
 		Carne carne = new Carne();
 		carne.setPrecio(150);
@@ -35,17 +40,24 @@ public class Ejercicio10 {
 		
 		
 		Caja caja1 = new Caja();
-		System.out.println(String.valueOf("Factura 1: "+ caja1.facturar(chango1)));
+		//System.out.println(String.valueOf("Factura 1: "+ caja1.facturar(chango1)));
 
+		
+		Assert.assertEquals(Float.valueOf(775),caja1.facturar(chango1));
+		
+		
 		Caja caja2 = new Caja();
-		System.out.println(String.valueOf("Factura 2: "+ caja2.facturar(chango2)));		
+		//System.out.println(String.valueOf("Factura 2: "+ caja2.facturar(chango2)));		
+		
+		Assert.assertEquals(Float.valueOf(580),caja2.facturar(chango2));
 		
 		Supermercado sm = new Supermercado();
 		sm.AgregarCaja(caja1);
 		sm.AgregarCaja(caja2);
 		
-		System.out.println("Liquidacion del Dia: "+ String.valueOf(sm.liquidacionDelDia()));
+		//System.out.println("Liquidacion del Dia: "+ String.valueOf(sm.liquidacionDelDia()));
 		
+		Assert.assertEquals(Float.valueOf(1355), sm.liquidacionDelDia());
 	}
 	
 }
