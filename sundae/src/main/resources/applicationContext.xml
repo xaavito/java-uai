@@ -16,8 +16,7 @@
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 	  <!-- SQLServer Driver -->
-	  <property name="driverClassName"
-            value="com.microsoft.sqlserver.sqljdbc4" />
+	  <property name="driverClassName" value="com.microsoft.sqlserver.sqljdbc4"/>
       <property name="url" value="jdbc:sqlserver://localhost/sundae" />
       <property name="username" value="" />
       <property name="password" value="" />
