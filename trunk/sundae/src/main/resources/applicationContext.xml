@@ -9,23 +9,23 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
 	<!--
-	<context:component-scan base-package="emptest"/>
+	<context:component-scan base-package="com.uai"/>
 	<context:annotation-config/>
 	-->
 	<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	  <!-- SQLServer Driver -->
-	  <property name="driverClassName" value="com.microsoft.sqlserver.sqljdbc4"/>
+	  <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
       <property name="url" value="jdbc:sqlserver://localhost/sundae" />
       <property name="username" value="" />
       <property name="password" value="" />
 	</bean>
 	
 	<bean id="baseSession"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource">
-			<ref bean="dataSource"></ref>
+			<ref bean="dataSource"/>
 		</property>
 		<property name="hibernateProperties">
 			<props>
@@ -36,16 +36,16 @@
         		<prop key="hibernate.connection.charSet">UTF-8</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.connection.useUnicode">true</prop>
-				<!-- <prop key="transaction.factory_class"> -->
-				<!-- org.hibernate.transaction.JDBCTransactionFactory -->
-				<!-- </prop> -->
+				<!--
 				<prop key="hibernate.cache.use_second_level_cache">
 					true
 				</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
+				
 				<prop key="hibernate.cache.region.factory_class">
-					net.sf.ehcache.hibernate.EhCacheRegionFactory
+					org.hibernate.cache.jbc2.SharedJBossCacheRegionFactory
 				</prop>
+				-->
 			</props>
 		</property>
 		<!--
@@ -65,7 +65,7 @@
 	</bean>
 	
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="baseSession" />
 	</bean>
 
@@ -77,10 +77,9 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 		<property name="sessionFactory" ref="baseSession" />
 	</bean>
-	
-	<!-- MySQL Dao --> 
+	<!--
 	<bean id="sampleDao" class="com.project.daos.SampleDaoImpl" parent="genericDao"/>
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
+	-->
 </beans>
