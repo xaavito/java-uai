@@ -2,18 +2,18 @@ package com.uai.bean;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
 import com.uai.model.Usuario;
 import com.uai.usuario.service.IUsuarioService;
 
-
-@ManagedBean(name="userMB")
-@RequestScoped
+@Named("usuarioBean")
+@Scope("session")
 public class UsuarioBean implements Serializable {
 
 	
@@ -22,7 +22,8 @@ public class UsuarioBean implements Serializable {
     private static final String ERROR   = "error";
  
     //Spring User Service is injected...
-    @ManagedProperty(value="#{UsuarioService}")
+    @Inject
+    @Named("usuarioService")
     IUsuarioService userService;
  
     private int id;
@@ -38,7 +39,12 @@ public class UsuarioBean implements Serializable {
         try {
             Usuario user = null;
             user = getUserService().login(getName(), getPass());
-            return SUCCESS;
+            if (user != null) {
+            	return SUCCESS;
+            }
+            else {
+            	return ERROR;
+            }
         } catch (DataAccessException e) {
             e.printStackTrace();
         }   
@@ -70,6 +76,7 @@ public class UsuarioBean implements Serializable {
      *
      * @param IUserService - User Service
      */
+    @Autowired
     public void setUserService(IUsuarioService userService) {
         this.userService = userService;
     }

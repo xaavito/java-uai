@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</title>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<p><b>Es para hernan que lo mira por tv!!!</b></p>
-<p><strong>Es para hernan que lo mira por tv!!!</strong></p>
-<p><i>Es para hernan que lo mira por tv!!!</i></p>
-<p><em>Es para hernan que lo mira por tv!!!</em></p>
-<p><code>Es para hernan que lo mira por tv!!!</code></p>
-<p>This is<sub> subscript</sub> and <sup>superscript</sup></p>
-
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	   <link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo" rel="stylesheet" type="text/css"/>	
+	</h:head>
+	<h:form>
+        <p:panelGrid columns="2">
+            <h:outputText value="Name"></h:outputText>
+            <p:inputText value="#{usuarioBean.name}"></p:inputText>
+            <h:outputText value="Password"></h:outputText>
+            <p:password value="#{usuarioBean.pass}"></p:password>
+        </p:panelGrid>
+        <p:commandButton value="Login" action="#{usuarioBean.login}"></p:commandButton>
+    </h:form>
 </html>

@@ -3,10 +3,8 @@ package com.uai.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="Usuario")
 public class Usuario {
 
 	private int idUsuario;
