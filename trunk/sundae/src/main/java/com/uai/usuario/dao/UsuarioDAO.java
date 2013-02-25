@@ -1,6 +1,7 @@
 package com.uai.usuario.dao;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -43,11 +44,15 @@ public class UsuarioDAO implements IUsuarioDAO{
 		query.setString("usr", usr);
 		query.setString("pass", pass);
 		
-		for(@SuppressWarnings("unchecked")
-		Iterator<Usuario> it= query.iterate(); it.hasNext();) {
-			 usuario = it.next();
+		List list = query.list();
+		for (Object user : list) {
+			usuario = (Usuario)user;
 		}
-		
+		/*
+		for(Iterator it=query.iterate();it.hasNext();) {
+			 usuario = (Usuario)it.next();
+		}
+		*/
     	//List<Usuario> result = (List<Usuario>) getSessionFactory().getCurrentSession().createQuery("from Usuario").list();
 		return usuario;
 	}
