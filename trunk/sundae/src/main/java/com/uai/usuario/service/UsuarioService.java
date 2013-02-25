@@ -1,15 +1,21 @@
 package com.uai.usuario.service;
 
-import org.springframework.transaction.annotation.Transactional;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.uai.model.Usuario;
 import com.uai.usuario.dao.IUsuarioDAO;
 
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true)
+@Named("usuarioService")
 public class UsuarioService implements IUsuarioService{
-
+	
+	@Inject
+	@Named("usuarioDAO")
 	IUsuarioDAO userDAO;
-	@Transactional(readOnly = false)
+	
+	//@Transactional(readOnly = false)
+	
 	public Usuario login(String usr, String pass) {
 		return userDAO.login(usr, pass);
 	}

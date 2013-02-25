@@ -2,13 +2,20 @@ package com.uai.usuario.dao;
 
 import java.util.Iterator;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.uai.model.Usuario;
 
+@Named("usuarioDAO")
 public class UsuarioDAO implements IUsuarioDAO{
 
+	@Inject
+	@Named("baseSession")
 	private SessionFactory sessionFactory;
 	 
     /**
@@ -29,18 +36,19 @@ public class UsuarioDAO implements IUsuarioDAO{
         this.sessionFactory = sessionFactory;
     }
     
+    @Transactional
 	public Usuario login(String usr, String pass) {
-		Query query = getSessionFactory().getCurrentSession().createQuery("select COUNT(*) from usuario where usuario = :usuario and password = :password");
-		query.setParameter("usuario", usr);
-		query.setParameter("password", pass);
+		Usuario usuario = null;
+    	Query query = getSessionFactory().getCurrentSession().createQuery("from Usuario where usuario = :usr and password = :pass");
+		query.setString("usr", usr);
+		query.setString("pass", pass);
 		
-		for(Iterator it=query.iterate();it.hasNext();) {
-			 Object[] row = (Object[]) it.next();
-			 System.out.println("ID: " + row[0]);
-			 System.out.println("Name: " + row[1]);
-			 System.out.println("Amount: " + row[2]);
+		for(@SuppressWarnings("unchecked")
+		Iterator<Usuario> it= query.iterate(); it.hasNext();) {
+			 usuario = it.next();
 		}
-		return null;
+		
+    	//List<Usuario> result = (List<Usuario>) getSessionFactory().getCurrentSession().createQuery("from Usuario").list();
+		return usuario;
 	}
-
 }
