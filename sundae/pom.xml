@@ -101,7 +101,7 @@
     <dependency>
         <groupId>org.primefaces</groupId>
         <artifactId>primefaces</artifactId>
-        <version>3.1.1</version>
+        <version>3.5</version>
     </dependency>
  
     <!-- Hibernate dependencies -->
