@@ -26,7 +26,7 @@
     	<h:form>  
 	        <p:panelMenu style="width:200px">  
 		        <p:submenu label="Alumnos">
-		        	<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>  
+		        	<p:menuitem value="Buscar" action="#{usuarioBean.buscar}" icon="ui-icon-disk"/>  
 		        	<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
 		        </p:submenu>
 		        <p:submenu label="Materias">
@@ -48,7 +48,7 @@
         <h:outputText value="Anda a saber!." />  
     </p:layoutUnit>  
   
-    <p:layoutUnit position="center">  
+    <p:layoutUnit id="principal" position="center">  
         <ui:insert name="content">Put default content here, if any.</ui:insert>  
     </p:layoutUnit>  
   
