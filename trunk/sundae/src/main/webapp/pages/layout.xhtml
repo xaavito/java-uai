@@ -26,7 +26,7 @@
     	<h:form>  
 	        <p:panelMenu style="width:200px">  
 		        <p:submenu label="Alumnos">
-		        	<p:menuitem value="Buscar" action="#{usuarioBean.buscar}" icon="ui-icon-disk"/>  
+		        	<p:menuitem value="Buscar" update=":principal" action="#{usuarioBean.buscar}" icon="ui-icon-disk"/>
 		        	<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
 		        </p:submenu>
 		        <p:submenu label="Materias">
