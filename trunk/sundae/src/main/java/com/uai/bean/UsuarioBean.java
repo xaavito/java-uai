@@ -51,6 +51,10 @@ public class UsuarioBean implements Serializable {
  
         return ERROR;
     }
+    
+    public String buscar() {
+        return "searchUser.xhtml?faces-redirect=true";
+    }
  
     /**
      * Reset Fields
