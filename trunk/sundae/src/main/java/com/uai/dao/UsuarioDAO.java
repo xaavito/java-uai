@@ -1,4 +1,4 @@
-package com.uai.usuario.dao;
+package com.uai.dao;
 
 import java.util.Iterator;
 import java.util.List;

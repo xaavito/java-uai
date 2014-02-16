@@ -1,4 +1,4 @@
-package com.uai.usuario.service;
+package com.uai.service;
 
 import com.uai.model.Usuario;
 

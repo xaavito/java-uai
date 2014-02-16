@@ -1,4 +1,4 @@
-package com.uai.usuario.dao;
+package com.uai.dao;
 
 import com.uai.model.Usuario;
 

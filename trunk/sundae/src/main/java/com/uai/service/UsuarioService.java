@@ -1,10 +1,10 @@
-package com.uai.usuario.service;
+package com.uai.service;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.uai.dao.IUsuarioDAO;
 import com.uai.model.Usuario;
-import com.uai.usuario.dao.IUsuarioDAO;
 
 //@Transactional(readOnly = true)
 @Named("usuarioService")
