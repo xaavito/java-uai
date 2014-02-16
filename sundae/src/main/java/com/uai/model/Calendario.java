@@ -1,40 +1,34 @@
 package com.uai.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.Date;
 
-@Entity
+
 public class Calendario {
 	private int idCalendario;
-	private String usuario;
-	private String password;
+	private String descripcion;
+	private Date fecha;
 	
-	@Id
-    @Column(name="idCalendario", unique = true, nullable = false)
-	public int getIdUsuario() {
+	public int getIdCalendario() {
 		return idCalendario;
 	}
 	
-	public void setIdUsuario(int idCalendario) {
+	public void setIdCalendario(int idCalendario) {
 		this.idCalendario = idCalendario;
 	}
-	
-	@Column(name="usuario", unique = true, nullable = false)
-	public String getUsuario() {
-		return usuario;
+
+	public String getDescripcion() {
+		return descripcion;
 	}
-	
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-	
-	@Column(name="password", unique = true, nullable = false)
-	public String getPassword() {
-		return password;
+
+	public Date getFecha() {
+		return fecha;
 	}
-	
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 }

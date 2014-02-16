@@ -14,7 +14,7 @@ import com.uai.service.IUsuarioService;
 
 @Named("usuarioBean")
 @Scope("session")
-public class UsuarioBean implements Serializable {
+public class UsuarioBean extends BaseBean implements Serializable {
 
 	
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class UsuarioBean implements Serializable {
     private String name;
     private String pass;
  
+    Usuario user = null;
     /**
      * Add User
      *
@@ -37,9 +38,8 @@ public class UsuarioBean implements Serializable {
      */
     public String login() {
         try {
-            Usuario user = null;
-            user = getUserService().login(getName(), getPass());
-            if (user != null) {
+            setUsr(getUserService().login(getName(), getPass()));
+            if (getUsr() != null) {
             	return SUCCESS;
             }
             else {
