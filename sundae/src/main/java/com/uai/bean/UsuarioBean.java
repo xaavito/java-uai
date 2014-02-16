@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
 import com.uai.model.Usuario;
-import com.uai.usuario.service.IUsuarioService;
+import com.uai.service.IUsuarioService;
 
 @Named("usuarioBean")
 @Scope("session")

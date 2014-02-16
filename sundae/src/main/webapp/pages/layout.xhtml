@@ -13,28 +13,28 @@
 	
 	<p:layout fullPage="true">  
   
-    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">  
-        <h:outputText value="Bienvenido #{usuarioBean.name}" />  
-		<p:clock/>
+    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" >  
+        <h:outputText value="Bienvenido #{usuarioBean.name}" style="float:right"/>  
+		<p:clock style="float:right"/>
     </p:layoutUnit>  
   
     <p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">  
-        <h:outputText value=".NET apesta!!." />  
+        <h:outputText value="Aca no se que meter" />  
     </p:layoutUnit>  
   
     <p:layoutUnit position="west" size="200" header="Principal" resizable="true" closable="false" collapsible="false">
     	<h:form>  
 	        <p:panelMenu style="width:200px">  
-		        <p:submenu label="Alumnos">
-		        	<p:menuitem value="Buscar" update=":principal" action="#{usuarioBean.buscar}" icon="ui-icon-disk"/>
-		        	<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-		        </p:submenu>
 		        <p:submenu label="Materias">
 			        <p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
 			        <p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
 		        </p:submenu>  
+		        <p:submenu label="Examenes">
+		        	<p:menuitem value="Buscar" update=":principal" action="#{usuarioBean.buscar}" icon="ui-icon-disk"/>
+		        	<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
+		        </p:submenu>
 		        <!-- <p:separator/> -->
-				<p:submenu label="Drogas">
+				<p:submenu label="Carrera">
 					<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
 					<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
 					<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
@@ -44,12 +44,13 @@
 	    </h:form> 
     </p:layoutUnit>  
   	
-    <p:layoutUnit position="east" size="200" resizable="true" closable="true" collapsible="true" effect="drop">  
-        <h:outputText value="Anda a saber!." />  
+    <p:layoutUnit position="east" style="width:100%; font-size:xx-small" resizable="false" closable="false" collapsible="false" effect="drop">  
+        <h:outputText value="Examenes Pendientes" style="width:300px; font-size:small"/>
+        <p:schedule value="#{calendarioBean.lazyEventModel}" style="width:310px; font-size:xx-small"/>    
     </p:layoutUnit>  
   
     <p:layoutUnit id="principal" position="center">  
-        <ui:insert name="content">Put default content here, if any.</ui:insert>  
+        <ui:insert name="content">Aca que iria??? </ui:insert>  
     </p:layoutUnit>  
   
 </p:layout>  
