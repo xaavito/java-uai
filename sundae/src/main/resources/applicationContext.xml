@@ -63,6 +63,11 @@
 	<bean class="com.uai.service.UsuarioService" id="usuarioService" scope="session"/>
 	
 	<bean class="com.uai.bean.CalendarioBean" id="calendarioBean" scope="session"/>
+	<bean class="com.uai.service.CalendarioService" id="calendarioService" scope="session"/>
+	<bean class="com.uai.model.Calendario" id="calendario" scope="session"/>
+	<bean class="com.uai.dao.CalendarioDAO" id="calendarioDAO" scope="session"/>
+	
+	<bean class="com.uai.bean.NavigationBean" id="navigationBean" scope="session"/>
 	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">

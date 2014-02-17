@@ -43,7 +43,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	@Transactional
 	public List<Calendario> getItemsCalendario(Date fechaInicio,
 			Date fechaFinal, Usuario usr) {
-		Usuario usuario = null;
+		//Usuario usuario = null;
 		List<Calendario> lista = new ArrayList<Calendario>();
 		Query query = getSessionFactory().getCurrentSession().createQuery(
 				"from Usuario where usuario = :usr and password = :pass");

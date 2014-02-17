@@ -55,7 +55,7 @@ public class UsuarioBean extends BaseBean implements Serializable {
     public String buscar() {
         return "searchUser.xhtml?faces-redirect=true";
     }
- 
+    
     /**
      * Reset Fields
      *
