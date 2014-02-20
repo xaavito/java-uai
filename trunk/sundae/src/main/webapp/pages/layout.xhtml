@@ -2,63 +2,74 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-     
-	<h:head>
-	   <link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo" rel="stylesheet" type="text/css"/>	
-	</h:head>
-	
-	<p:layout fullPage="true">  
-  
-	    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" >  
-	        <h:outputText value="Bienvenido #{usuarioBean.name}" style="float:right"/>  
-			<p:clock style="float:right"/>
-	    </p:layoutUnit>  
-	  
-	    <p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">  
-	        <h:outputText value="Aca no se que meter" />  
-	    </p:layoutUnit>  
-	  
-	    <p:layoutUnit position="west" size="200" header="Principal" resizable="true" closable="false" collapsible="false">
-	    	<h:form>  
-		        <p:panelMenu style="width:200px">  
-			        <p:submenu label="Materias">
-				        <p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-				        <p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-			        </p:submenu>  
-			        <p:submenu label="Examenes">
-			        	<p:menuitem value="Buscar" update=":principal" action="#{usuarioBean.buscar}" icon="ui-icon-disk"/>
-			        	<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-			        </p:submenu>
-					<p:submenu label="Carrera">
-						<p:menuitem value="Mi Carrera" actionListener="#{navigationBean.miCarrera}" ajax="false" update=":principal" icon="ui-icon-disk"/>
-						<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-						<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-						<p:menuitem value="Hola" actionListener="#{buttonBean.save}" icon="ui-icon-disk"/>
-					</p:submenu>    
-			    </p:panelMenu>
-		    </h:form> 
-	    </p:layoutUnit>  
-	  	
-	    <p:layoutUnit position="east" style="width:100%; font-size:xx-small" resizable="false" closable="false" collapsible="false" effect="drop">  
-	        <h:outputText value="Examenes Pendientes" style="width:300px; font-size:small"/>
-	        <p:schedule value="#{calendarioBean.lazyEventModel}" style="width:310px; font-size:xx-small"/>    
-	    </p:layoutUnit>  
-	  
-	  <p:layoutUnit position="center" size="400">
-            <h:panelGroup id="principal">
-                <ui:include src="#{navigationBean.pageName}.xhtml" />
-            </h:panelGroup>
-        </p:layoutUnit>
-	  <!--  
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo"
+		rel="stylesheet" type="text/css" />
+</h:head>
+
+<p:layout fullPage="true">
+
+	<p:layoutUnit position="north" size="100" resizable="true"
+		closable="true" collapsible="true">
+		<h:outputText value="Bienvenido #{usuarioBean.name}"
+			style="float:right" />
+		<p:clock style="float:right" />
+	</p:layoutUnit>
+
+	<p:layoutUnit position="south" size="100" resizable="true"
+		closable="true" collapsible="true">
+		<h:outputText value="Aca no se que meter" />
+	</p:layoutUnit>
+
+	<p:layoutUnit position="west" size="150" header="Principal"
+		resizable="true" closable="false" collapsible="false"
+		style="font-size:small">
+		<h:form>
+			<p:panelMenu style="width:150">
+				<p:submenu label="Carrera">
+					<p:menuitem value="Nueva Carrera"
+						actionListener="#{navigationBean.nuevaCarrera}" ajax="false"
+						update=":principal" icon="ui-icon-disk" />
+					<p:menuitem value="Mi Carrera"
+						actionListener="#{navigationBean.miCarrera}" ajax="false"
+						update=":principal" icon="ui-icon-disk" />
+				</p:submenu>
+				<p:submenu label="Materias">
+					<p:menuitem value="Seleccionar Materias" update=":principal"
+						action="#{usuarioBean.buscar}" icon="ui-icon-disk" />
+				</p:submenu>
+				<p:submenu label="Examenes">
+					<p:menuitem value="Buscar" update=":principal"
+						action="#{usuarioBean.buscar}" icon="ui-icon-disk" />
+				</p:submenu>
+			</p:panelMenu>
+		</h:form>
+	</p:layoutUnit>
+
+	<p:layoutUnit position="east" style="width:100%; font-size:xx-small"
+		resizable="false" closable="false" collapsible="false" effect="drop">
+		<h:outputText value="Examenes Pendientes"
+			style="width:300px; font-size:small" />
+		<p:schedule value="#{calendarioBean.lazyEventModel}"
+			style="width:310px; font-size:xx-small" />
+	</p:layoutUnit>
+
+	<p:layoutUnit position="center" size="400" style="font-size:small">
+		<h:panelGroup id="principal">
+			<ui:include src="#{navigationBean.pageName}.xhtml" />
+		</h:panelGroup>
+	</p:layoutUnit>
+	<!--  
 	    <p:layoutUnit id="principal" position="center">
 	      
 	        <ui:insert name="content">Aca que iria??? </ui:insert>  
 	    </p:layoutUnit>  
   -->
-	</p:layout>  
+</p:layout>
 
 </html>

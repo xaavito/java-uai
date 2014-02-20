@@ -27,7 +27,11 @@ public class CalendarioBean extends BaseBean implements Serializable {
     @Named("calendarioService")
     ICalendarioService calendarioService;
     
-	private static final long serialVersionUID = 6049595702208895073L;
+    @Inject
+    @Named("usuarioBean")
+    UsuarioBean usuarioBean;
+    
+    private static final long serialVersionUID = 6049595702208895073L;
 	private ScheduleModel lazyEventModel;  
   
     public CalendarioBean() {  
@@ -42,7 +46,7 @@ public class CalendarioBean extends BaseBean implements Serializable {
             public void loadEvents(Date start, Date end) {  
                 clear();  
                   
-                List<Calendario> itemsCalendario = getCalendarioService().getItemsCalendario(start, end, getUsr());
+                List<Calendario> itemsCalendario = getCalendarioService().getItemsCalendario(start, end, usuarioBean.getUsr());
                 
                 for (Calendario calendario : itemsCalendario) {
                 	addEvent(new DefaultScheduleEvent(calendario.getDescripcion(), calendario.getFecha(), calendario.getFecha()));
