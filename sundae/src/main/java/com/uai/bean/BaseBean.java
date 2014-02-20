@@ -2,8 +2,14 @@ package com.uai.bean;
 
 import java.io.Serializable;
 
+import javax.inject.Named;
+
+import org.springframework.context.annotation.Scope;
+
 import com.uai.model.Usuario;
 
+@Named("baseBean")
+@Scope("session")
 public class BaseBean implements Serializable{
 	
 	/**

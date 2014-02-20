@@ -1,23 +1,16 @@
 package com.uai.bean;
 
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.springframework.context.annotation.Scope;
 
 @Named("navigationBean")
 @Scope("session")
-public class NavigationBean {
+public class NavigationBean extends BaseBean{
 
     private String pageName="test";
 
     public NavigationBean() {
-    }
-
-    public void doNav() {
-    	System.out.println("Hello");
-        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("test");
-        this.pageName = str;
     }
 
     public String getPageName() {
@@ -25,10 +18,15 @@ public class NavigationBean {
     }
 
     public void miCarrera() {
-    	System.out.println("Hello");
-        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("miCarrera");
-        this.pageName = "miCarrera";
-        //return "miCarrera.xhtml?faces-redirect=true";
+    	this.pageName = "miCarrera";
+    }
+    
+    public void nuevaCarrera() {
+    	this.pageName = "nuevaCarrera";
+    }
+    
+    public void buscar() {
+    	this.pageName = "searchUser";
     }
     
     public void setPageName(String pageName) {

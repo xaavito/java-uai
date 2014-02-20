@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
-import com.uai.model.Usuario;
 import com.uai.service.IUsuarioService;
 
 @Named("usuarioBean")
@@ -30,7 +29,6 @@ public class UsuarioBean extends BaseBean implements Serializable {
     private String name;
     private String pass;
  
-    Usuario user = null;
     /**
      * Add User
      *
@@ -50,10 +48,6 @@ public class UsuarioBean extends BaseBean implements Serializable {
         }   
  
         return ERROR;
-    }
-    
-    public String buscar() {
-        return "searchUser.xhtml?faces-redirect=true";
     }
     
     /**
