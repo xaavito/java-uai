@@ -2,6 +2,15 @@ package com.uai.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Carrera {
 
 	private int idCarrera;
@@ -16,6 +25,9 @@ public class Carrera {
 	public Carrera() {
 	}
 	
+	@Id
+	@GeneratedValue
+    @Column(name="idCarrera", unique = true, nullable = false)
 	public int getIdCarrera() {
 		return idCarrera;
 	}
@@ -24,6 +36,7 @@ public class Carrera {
 		this.idCarrera = idCarrera;
 	}
 
+	@Column(name="nombre", unique = true, nullable = false)
 	public String getNombre() {
 		return nombre;
 	}
@@ -31,7 +44,8 @@ public class Carrera {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
+	@Column(name="notaMinima", unique = true, nullable = false)
 	public int getNotaMinima() {
 		return notaMinima;
 	}
@@ -40,6 +54,7 @@ public class Carrera {
 		this.notaMinima = notaMinima;
 	}
 
+	@Column(name="cantidadMaxFinales", unique = true, nullable = false)
 	public int getCantidadMaxFinales() {
 		return cantidadMaxFinales;
 	}
@@ -48,6 +63,7 @@ public class Carrera {
 		this.cantidadMaxFinales = cantidadMaxFinales;
 	}
 
+	@Column(name="asistenciaMin", unique = true, nullable = false)
 	public int getAsistenciaMin() {
 		return asistenciaMin;
 	}
@@ -56,6 +72,7 @@ public class Carrera {
 		this.asistenciaMin = asistenciaMin;
 	}
 
+	@Column(name="aniosMaxFinales", unique = true, nullable = false)
 	public int getAniosMaxFinales() {
 		return aniosMaxFinales;
 	}
@@ -64,6 +81,8 @@ public class Carrera {
 		this.aniosMaxFinales = aniosMaxFinales;
 	}
 
+	@ManyToOne
+	@JoinColumn(name="idUniversidad")
 	public Universidad getUniversidad() {
 		return universidad;
 	}
@@ -72,6 +91,7 @@ public class Carrera {
 		this.universidad = universidad;
 	}
 
+	@OneToMany(mappedBy="carrera")
 	public List<Plan> getPlanes() {
 		return planes;
 	}
