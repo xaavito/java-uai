@@ -19,8 +19,7 @@ public class CalendarioService implements ICalendarioService{
 	
 	public List<Calendario> getItemsCalendario(Date fechaInicio,
 			Date fechaFinal, Usuario usr) {
-		// TODO Auto-generated method stub
-		return null;
+		return calendarioDAO.getItemsCalendario(fechaInicio, fechaFinal, usr);
 	}
 
 }
