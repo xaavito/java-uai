@@ -9,39 +9,42 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Tipo_Usuario {
-
-	private int idTipoUsuario;
-	private String descripcion;
-	private List<Usuario> usuarios;
+public class Dia {
 	
-	public Tipo_Usuario(){}
+	private int idDia;
+	private String descripcion;
+	private List<Dia_Cursada> dias_Cursada;
+	
+	public Dia(){}
 	
 	@Id
 	@GeneratedValue
-    @Column(name="idTipoUsuario", unique = true, nullable = false)
-	public int getIdTipoUsuario() {
-		return idTipoUsuario;
+    @Column(name="idDia", unique = true, nullable = false)
+	public int getIdDia() {
+		return idDia;
 	}
-	
-	public void setIdTipoUsuario(int idTipoUsuario) {
-		this.idTipoUsuario = idTipoUsuario;
+
+	public void setIdDia(int idDia) {
+		this.idDia = idDia;
 	}
-	
+
 	@Column(name="descripcion", unique = true, nullable = false)
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	@OneToMany(mappedBy="tipo_Usuario")
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+
+	@OneToMany(mappedBy="dia")
+	public List<Dia_Cursada> getDias_Cursada() {
+		return dias_Cursada;
+	}
+
+	public void setDias_Cursada(List<Dia_Cursada> dias_Cursada) {
+		this.dias_Cursada = dias_Cursada;
 	}
 	
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+	
 }
