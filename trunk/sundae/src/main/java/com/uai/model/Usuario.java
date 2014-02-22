@@ -2,7 +2,10 @@ package com.uai.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario {
@@ -10,8 +13,12 @@ public class Usuario {
 	private int idUsuario;
 	private String usuario;
 	private String password;
+	private Tipo_Usuario tipo_Usuario;
+	
+	public Usuario(){}
 	
 	@Id
+	@GeneratedValue
     @Column(name="idUsuario", unique = true, nullable = false)
 	public int getIdUsuario() {
 		return idUsuario;
@@ -37,5 +44,15 @@ public class Usuario {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="idTipoUsuario")
+	public Tipo_Usuario getTipo_Usuario() {
+		return tipo_Usuario;
+	}
+
+	public void setTipo_Usuario(Tipo_Usuario tipo_Usuario) {
+		this.tipo_Usuario = tipo_Usuario;
 	}
 }
