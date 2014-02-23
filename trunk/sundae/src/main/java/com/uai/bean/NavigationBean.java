@@ -8,7 +8,11 @@ import org.springframework.context.annotation.Scope;
 @Scope("session")
 public class NavigationBean extends BaseBean{
 
-    private String pageName="test";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8844844725194400356L;
+	private String pageName="test";
 
     public NavigationBean() {
     }

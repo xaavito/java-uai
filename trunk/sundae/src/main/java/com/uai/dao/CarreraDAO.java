@@ -1,7 +1,6 @@
 package com.uai.dao;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,11 +10,11 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.uai.model.Calendario;
+import com.uai.model.Carrera;
 import com.uai.model.Usuario;
 
-@Named("calendarioDAO")
-public class CalendarioDAO implements ICalendarioDAO {
+@Named("carreraDAO")
+public class CarreraDAO implements ICarreraDAO {
 
 	@Inject
 	@Named("baseSession")
@@ -39,24 +38,39 @@ public class CalendarioDAO implements ICalendarioDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Transactional
-	public List<Calendario> getItemsCalendario(Date fechaInicio,
-			Date fechaFinal, Usuario usr) {
-		List<Calendario> lista = new ArrayList<Calendario>();
-		Query query = getSessionFactory().getCurrentSession().createQuery(
-				"from Cursada as Cursada, Dia_Cursada as Dia_Cursada, Fecha_Cursada as Fecha_Cursada where Cursada.idCursada = Dia_Cursada.cursada and Fecha_Cursada.dia_Cursada = Dia_Cursada.idDiaCursada and Cursada.usuario = :usr and Fecha_Cursada.fecha between :inicio and :fin");
-		
+	public List<Carrera> getMisCarreras(Usuario usr) {
+		List<Carrera> carreras = new ArrayList<Carrera>();
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"select cur.materia.plan.carrera from Cursada as cur " +
+						"where cur.usuario = :usr");
+
 		query.setEntity("usr", usr);
-		
-		query.setDate("inicio", fechaInicio);
-		query.setDate("fin", fechaFinal);
+
 		@SuppressWarnings("rawtypes")
 		List list = query.list();
-		for (Object user : list) {
-			user.toString();
+		for (Object obj : list) {
+			carreras.add((Carrera) obj);
 		}
-		
-		return lista;
+
+		return carreras;
+	}
+
+	@Transactional
+	public List<Carrera> getAllCarreras() {
+		List<Carrera> carreras = new ArrayList<Carrera>();
+		Query query = getSessionFactory().getCurrentSession().createQuery(
+				"from Carrera");
+
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			carreras.add((Carrera) obj);
+		}
+
+		return carreras;
 	}
 }

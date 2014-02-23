@@ -11,20 +11,20 @@
     http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
     http://www.springframework.org/schema/aop 
     http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
-    http://www.springframework.org/schema/context/
+    http://www.springframework.org/schema/context
   	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
   	
-  	<!--
+  	<!-- 
 	<context:component-scan base-package="com.uai">
      	<context:include-filter type="aspectj" expression="com.uai.*" />
 	</context:component-scan>
-
+	
+	
 	<context:component-scan base-package="com.uai"/>
 	<context:component-scan base-package="com.bd.controleur"/>
-	
-	-->
+	 -->
+	 
 	<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	  <!-- SQLServer Driver -->
@@ -77,6 +77,12 @@
 	<bean class="com.uai.dao.CalendarioDAO" id="calendarioDAO" scope="session"/>
 	
 	<bean class="com.uai.bean.NavigationBean" id="navigationBean" scope="session"/>
+	
+	<bean class="com.uai.bean.CarreraBean" id="carreraBean" scope="session"/>
+	<bean class="com.uai.service.CarreraService" id="carreraService" scope="session"/>
+	<bean class="com.uai.model.Carrera" id="carrera" scope="session"/>
+	<bean class="com.uai.dao.CarreraDAO" id="carreraDAO" scope="session"/>
+	
 	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
