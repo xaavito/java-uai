@@ -38,7 +38,7 @@ public class Tipo_Cursada {
 		this.descripcion = descripcion;
 	}
 
-	@OneToMany(mappedBy="tipo_Cursada")
+	@OneToMany(mappedBy="tipo_cursada")
 	public List<Cursada> getCursadas() {
 		return cursadas;
 	}
