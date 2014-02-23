@@ -19,7 +19,7 @@ public class Materia {
 	private String nombre;
 	private Plan plan;
 	private List<Materia> materiasPreRelativas;
-	private List<Materia> materiasPostRelativas;
+	//private List<Materia> materiasPostRelativas;
 	
 	public Materia(){}
 

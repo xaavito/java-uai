@@ -29,6 +29,9 @@ public class UsuarioBean extends BaseBean implements Serializable {
     private String name;
     private String pass;
  
+    public UsuarioBean(){
+    	//System.out.println(getUserService());
+    }
     /**
      * Add User
      *
