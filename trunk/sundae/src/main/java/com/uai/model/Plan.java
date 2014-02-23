@@ -40,7 +40,7 @@ public class Plan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="idPlan")
+	@JoinColumn(name="idCarrera")
 	public Carrera getCarrera() {
 		return carrera;
 	}

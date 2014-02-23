@@ -45,9 +45,10 @@ public class CalendarioDAO implements ICalendarioDAO {
 			Date fechaFinal, Usuario usr) {
 		List<Calendario> lista = new ArrayList<Calendario>();
 		Query query = getSessionFactory().getCurrentSession().createQuery(
-				"from Cursada c, Dia_Cursada dc, Fecha_Cursada fc where c.idCursada = dc.idCursada and fc.idDiaCursada = dc.idDiaCursada and c.idUsuario = :usr and fc.fecha between :inicio and :fin");
+				"from Cursada as Cursada, Dia_Cursada as Dia_Cursada, Fecha_Cursada as Fecha_Cursada where Cursada.idCursada = Dia_Cursada.cursada and Fecha_Cursada.dia_Cursada = Dia_Cursada.idDiaCursada and Cursada.usuario = :usr and Fecha_Cursada.fecha between :inicio and :fin");
 		
-		query.setLong("usr", usr.getIdUsuario());
+		query.setEntity("usr", usr);
+		
 		query.setDate("inicio", fechaInicio);
 		query.setDate("fin", fechaFinal);
 		List list = query.list();
