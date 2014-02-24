@@ -7,8 +7,10 @@ import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataAccessException;
 
 import com.uai.model.Carrera;
+import com.uai.model.Cursada;
 import com.uai.service.ICarreraService;
 
 @Named("carreraBean")
@@ -23,6 +25,9 @@ public class CarreraBean {
     @Named("usuarioBean")
     UsuarioBean usuarioBean;
     
+    private Cursada cursada;
+    private List<Cursada> materiasFull;
+    
     private Carrera mCarrera;
     private List<Carrera> misCarreras;
     
@@ -36,6 +41,7 @@ public class CarreraBean {
     public String getInitialize() {
     	setMisCarreras(getCarreraService().getMisCarreras(usuarioBean.getUsr()));
     	setAllCarreras(getCarreraService().getAllCarreras());
+    	setMateriasFull(getCarreraService().getMisMaterias(usuarioBean.getUsr()));
     	return null;
     }
     
@@ -78,5 +84,31 @@ public class CarreraBean {
 
 	public void setmCarrera(Carrera mCarrera) {
 		this.mCarrera = mCarrera;
+	}
+	
+	public String nuevaCarrera() {
+        try {
+        	getCarreraService().nuevaCarrera(getnCarrera());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }   
+ 
+        return null;
+    }
+
+	public List<Cursada> getMateriasFull() {
+		return materiasFull;
+	}
+
+	public void setMateriasFull(List<Cursada> materiasFull) {
+		this.materiasFull = materiasFull;
+	}
+
+	public Cursada getCursada() {
+		return cursada;
+	}
+
+	public void setCursada(Cursada cursada) {
+		this.cursada = cursada;
 	}
 }

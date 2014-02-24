@@ -33,6 +33,14 @@ public class NavigationBean extends BaseBean{
     	this.pageName = "searchUser";
     }
     
+    public void materias() {
+    	this.pageName = "materias";
+    }
+    
+    public void examenes() {
+    	this.pageName = "materias";
+    }
+    
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }
