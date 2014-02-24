@@ -8,21 +8,22 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:form>
+	#{carreraBean.initializeMisMaterias}
 	<p:dataTable var="materias" value="#{carreraBean.materiasFull}">
 		<p:column headerText="Facultad">
-			<h:outputText value="UAI" />
+			<h:outputText value="#{cursada.materia.plan.carrera.universidad.nombre}" />
 		</p:column>
 
 		<p:column headerText="Carrera">
-			<h:outputText value="Ing en sistemas" />
+			<h:outputText value="#{cursada.materia.plan.carrera.nombre}" />
 		</p:column>
 
 		<p:column headerText="Materia">
-			<h:outputText value="Sistemas 1" />
+			<h:outputText value="#{cursada.materia.nombre}" />
 		</p:column>
 		
 		<p:column headerText="Fecha Cursada">
-			<h:outputText value="10/10/2013" />
+			<h:outputText value="#{cursada.fechaInicioCursada}" />
 		</p:column>
 
 		<p:column headerText="Parcial 1">

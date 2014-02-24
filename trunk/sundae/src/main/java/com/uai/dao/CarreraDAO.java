@@ -84,6 +84,7 @@ public class CarreraDAO implements ICarreraDAO {
 	}
 
 	public List<Cursada> getMisMaterias(Usuario usr) {
+		System.out.println("llegando a las materias mias....");
 		List<Cursada> cursadas = new ArrayList<Cursada>();
 		Query query = getSessionFactory().getCurrentSession().createQuery(
 				"from Cursada where usuario = :usr");
