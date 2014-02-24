@@ -40,12 +40,12 @@
 						update=":principal" icon="ui-icon-disk" />
 				</p:submenu>
 				<p:submenu label="Materias">
-					<p:menuitem value="Seleccionar Materias" update=":principal"
-						action="#{usuarioBean.buscar}" icon="ui-icon-disk" />
+					<p:menuitem value="Materias" update=":principal"
+						action="#{navigationBean.materias}" icon="ui-icon-disk" />
 				</p:submenu>
 				<p:submenu label="Examenes">
 					<p:menuitem value="Buscar" update=":principal"
-						action="#{usuarioBean.buscar}" icon="ui-icon-disk" />
+						action="#{navigationBean.examenes}" icon="ui-icon-disk" />
 				</p:submenu>
 			</p:panelMenu>
 		</h:form>
