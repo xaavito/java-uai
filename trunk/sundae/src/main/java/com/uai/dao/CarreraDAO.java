@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uai.model.Carrera;
+import com.uai.model.Cursada;
 import com.uai.model.Usuario;
 
 @Named("carreraDAO")
@@ -45,10 +46,10 @@ public class CarreraDAO implements ICarreraDAO {
 		Query query = getSessionFactory()
 				.getCurrentSession()
 				.createQuery(
-						"select cur.materia.plan.carrera from Cursada as cur " +
-						"where cur.usuario = :usr");
+						"select usr.plan.carrera from Usuario as usr " +
+						"where usr.idUsuario = :usr");
 
-		query.setEntity("usr", usr);
+		query.setInteger("usr", usr.getIdUsuario());
 
 		@SuppressWarnings("rawtypes")
 		List list = query.list();
@@ -75,5 +76,26 @@ public class CarreraDAO implements ICarreraDAO {
 		}
 
 		return carreras;
+	}
+
+	public int nuevaCarrera(Carrera getnCarrera) {
+		getSessionFactory().getCurrentSession().save(getnCarrera);
+		return 1;
+	}
+
+	public List<Cursada> getMisMaterias(Usuario usr) {
+		List<Cursada> cursadas = new ArrayList<Cursada>();
+		Query query = getSessionFactory().getCurrentSession().createQuery(
+				"from Cursada where usuario = :usr");
+
+		query.setEntity("usr", usr);
+		
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			cursadas.add((Cursada) obj);
+		}
+
+		return cursadas;
 	}
 }

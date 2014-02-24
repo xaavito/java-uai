@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:form>
-	<p:dataTable var="materias" value="">
+	<p:dataTable var="materias" value="#{carreraBean.materiasFull}">
 		<p:column headerText="Facultad">
 			<h:outputText value="UAI" />
 		</p:column>
@@ -19,6 +19,10 @@
 
 		<p:column headerText="Materia">
 			<h:outputText value="Sistemas 1" />
+		</p:column>
+		
+		<p:column headerText="Fecha Cursada">
+			<h:outputText value="10/10/2013" />
 		</p:column>
 
 		<p:column headerText="Parcial 1">
@@ -36,7 +40,6 @@
 		<p:column headerText="Nota Final">
 			<h:outputText value="5" />
 		</p:column>
-		
 	</p:dataTable>
 </h:form>
 

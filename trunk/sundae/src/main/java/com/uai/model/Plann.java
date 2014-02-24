@@ -16,6 +16,7 @@ public class Plann {
 	private String nombre;
 	private Carrera carrera;
 	private List<Materia> materias;
+	private List<Usuario> usuarios;
 	
 	public Plann(){}
 
@@ -56,5 +57,14 @@ public class Plann {
 
 	public void setMaterias(List<Materia> materias) {
 		this.materias = materias;
+	}
+
+	@OneToMany(mappedBy="plan")
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 }

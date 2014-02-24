@@ -14,6 +14,7 @@ public class Usuario {
 	private String usuario;
 	private String password;
 	private Tipo_Usuario tipo_Usuario;
+	private Plann plan;
 	
 	public Usuario(){}
 	
@@ -54,5 +55,15 @@ public class Usuario {
 
 	public void setTipo_Usuario(Tipo_Usuario tipo_Usuario) {
 		this.tipo_Usuario = tipo_Usuario;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="idPlan")
+	public Plann getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plann plan) {
+		this.plan = plan;
 	}
 }
