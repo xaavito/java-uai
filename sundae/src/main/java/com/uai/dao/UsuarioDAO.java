@@ -48,12 +48,6 @@ public class UsuarioDAO implements IUsuarioDAO{
 		for (Object user : list) {
 			usuario = (Usuario)user;
 		}
-		/*
-		for(Iterator it=query.iterate();it.hasNext();) {
-			 usuario = (Usuario)it.next();
-		}
-		*/
-    	//List<Usuario> result = (List<Usuario>) getSessionFactory().getCurrentSession().createQuery("from Usuario").list();
 		return usuario;
 	}
 }
