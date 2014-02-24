@@ -20,7 +20,7 @@ public class Carrera {
 	private int asistenciaMin;
 	private int aniosMaxFinales;
 	private Universidad universidad;
-	private List<Plan> planes; 
+	private List<Plann> planes; 
 	
 	public Carrera() {
 	}
@@ -92,11 +92,11 @@ public class Carrera {
 	}
 
 	@OneToMany(mappedBy="carrera")
-	public List<Plan> getPlanes() {
+	public List<Plann> getPlanes() {
 		return planes;
 	}
 
-	public void setPlanes(List<Plan> planes) {
+	public void setPlanes(List<Plann> planes) {
 		this.planes = planes;
 	}
 }

@@ -17,7 +17,7 @@ public class Materia {
 
 	private int idMateria;
 	private String nombre;
-	private Plan plan;
+	private Plann plan;
 	private List<Materia> materiasPreRelativas;
 	//private List<Materia> materiasPostRelativas;
 	
@@ -45,11 +45,11 @@ public class Materia {
 
 	@ManyToOne
 	@JoinColumn(name="idPlan")
-	public Plan getPlan() {
+	public Plann getPlan() {
 		return plan;
 	}
 
-	public void setPlan(Plan plan) {
+	public void setPlan(Plann plan) {
 		this.plan = plan;
 	}
 
