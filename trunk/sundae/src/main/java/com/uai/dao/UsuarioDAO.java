@@ -43,6 +43,7 @@ public class UsuarioDAO implements IUsuarioDAO{
 		query.setString("usr", usr);
 		query.setString("pass", pass);
 		
+		@SuppressWarnings("rawtypes")
 		List list = query.list();
 		for (Object user : list) {
 			usuario = (Usuario)user;
