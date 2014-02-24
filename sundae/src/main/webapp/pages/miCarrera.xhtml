@@ -9,7 +9,7 @@
 
 <h:form>
 	#{carreraBean.initializeMisMaterias}
-	<p:dataTable var="materias" value="#{carreraBean.materiasFull}">
+	<p:dataTable var="cursada" value="#{carreraBean.materiasFull}">
 		<p:column headerText="Facultad">
 			<h:outputText value="#{cursada.materia.plan.carrera.universidad.nombre}" />
 		</p:column>
