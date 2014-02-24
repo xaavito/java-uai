@@ -11,13 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Plan {
+public class Plann {
 	private int idPlan;
 	private String nombre;
 	private Carrera carrera;
 	private List<Materia> materias;
 	
-	public Plan(){}
+	public Plann(){}
 
 	@Id
 	@GeneratedValue
