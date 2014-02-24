@@ -55,6 +55,9 @@ public class CarreraDAO implements ICarreraDAO {
 		for (Object obj : list) {
 			carreras.add((Carrera) obj);
 		}
+		if (carreras.isEmpty()) {
+			carreras.add(new Carrera("No tiene carreras"));
+		}
 
 		return carreras;
 	}

@@ -23,7 +23,7 @@ public class CarreraBean {
     @Named("usuarioBean")
     UsuarioBean usuarioBean;
     
-    private Carrera carrera;
+    private Carrera mCarrera;
     private List<Carrera> misCarreras;
     
     private Carrera nCarrera;
@@ -72,11 +72,11 @@ public class CarreraBean {
 		this.nCarrera = nCarrera;
 	}
 
-	public Carrera getCarrera() {
-		return carrera;
+	public Carrera getmCarrera() {
+		return mCarrera;
 	}
 
-	public void setCarrera(Carrera carrera) {
-		this.carrera = carrera;
+	public void setmCarrera(Carrera mCarrera) {
+		this.mCarrera = mCarrera;
 	}
 }

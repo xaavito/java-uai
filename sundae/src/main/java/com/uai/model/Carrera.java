@@ -25,6 +25,10 @@ public class Carrera {
 	public Carrera() {
 	}
 	
+	public Carrera(String string) {
+		this.nombre = string;
+	}
+
 	@Id
 	@GeneratedValue
     @Column(name="idCarrera", unique = true, nullable = false)
