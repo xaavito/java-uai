@@ -78,11 +78,13 @@ public class CarreraDAO implements ICarreraDAO {
 		return carreras;
 	}
 
+	@Transactional
 	public int nuevaCarrera(Carrera getnCarrera) {
 		getSessionFactory().getCurrentSession().save(getnCarrera);
 		return 1;
 	}
 
+	@Transactional
 	public List<Cursada> getMisMaterias(Usuario usr) {
 		System.out.println("llegando a las materias mias....");
 		List<Cursada> cursadas = new ArrayList<Cursada>();
