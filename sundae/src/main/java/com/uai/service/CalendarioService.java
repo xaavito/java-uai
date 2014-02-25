@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.uai.dao.ICalendarioDAO;
-import com.uai.model.Calendario;
+import com.uai.model.Examen;
 import com.uai.model.Usuario;
 
 @Named("calendarioService")
@@ -17,7 +17,7 @@ public class CalendarioService implements ICalendarioService{
 	@Named("calendarioDAO")
 	ICalendarioDAO calendarioDAO;
 	
-	public List<Calendario> getItemsCalendario(Date fechaInicio,
+	public List<Examen> getItemsCalendario(Date fechaInicio,
 			Date fechaFinal, Usuario usr) {
 		return calendarioDAO.getItemsCalendario(fechaInicio, fechaFinal, usr);
 	}
