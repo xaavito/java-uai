@@ -15,7 +15,7 @@ public class Examen {
 	private int idExamen;
 	private Date fecha;
 	private float nota;
-	private int tipoExamen;
+	private Tipo_Examen tipoExamen;
 	private Cursada cursada;
 	
 	public Examen(){}
@@ -49,12 +49,13 @@ public class Examen {
 		this.nota = nota;
 	}
 
-	@Column(name="tipoExamen", unique = true, nullable = false)
-	public int getTipoExamen() {
+	@ManyToOne
+	@JoinColumn(name="idTipoExamen")
+	public Tipo_Examen getTipoExamen() {
 		return tipoExamen;
 	}
 
-	public void setTipoExamen(int tipoExamen) {
+	public void setTipoExamen(Tipo_Examen tipoExamen) {
 		this.tipoExamen = tipoExamen;
 	}
 
