@@ -1,6 +1,5 @@
 package com.uai.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,10 +44,6 @@ public class CalendarioDAO implements ICalendarioDAO {
 	public List<Examen> getItemsCalendario(Date fechaInicio,
 			Date fechaFinal, Usuario usr) {
 		List<Examen> lista = new ArrayList<Examen>();
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		String formattedIni = formatter.format(fechaInicio);
-		String formattedFin = formatter.format(fechaFinal);
 		
 		Query query = getSessionFactory().getCurrentSession().createQuery(
 				"select ex from Examen as ex " +
