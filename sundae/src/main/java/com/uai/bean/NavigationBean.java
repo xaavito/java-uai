@@ -38,7 +38,7 @@ public class NavigationBean extends BaseBean{
     }
     
     public void examenes() {
-    	this.pageName = "materias";
+    	this.pageName = "examenes";
     }
     
     public void setPageName(String pageName) {
