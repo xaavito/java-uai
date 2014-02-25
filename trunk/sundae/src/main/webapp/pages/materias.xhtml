@@ -8,35 +8,39 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:form>
-	<p:dataTable var="materias" value="">
+	#{examenBean.initializeMisExamenes}
+	<p:dataTable var="coco" value="#{examenBean.examenes}">
 		<p:column headerText="Facultad">
-			<h:outputText value="UAI" />
+			<h:outputText value="#{coco.cursada.materia.plan.carrera.universidad.nombre}" />
 		</p:column>
 
 		<p:column headerText="Carrera">
-			<h:outputText value="Ing en sistemas" />
+			<h:outputText value="#{coco.cursada.materia.plan.carrera.nombre}" />
 		</p:column>
 
 		<p:column headerText="Materia">
-			<h:outputText value="Sistemas 1" />
+			<h:outputText value="#{coco.cursada.materia.nombre}" />
+		</p:column>
+		
+		<p:column headerText="Fecha Cursada">
+			<h:outputText value="#{coco.cursada.fechaInicioCursada}" />
 		</p:column>
 
 		<p:column headerText="Parcial 1">
-			<h:outputText value="5" />
+			<h:outputText value="#{coco.nota}" />
 		</p:column>
 		
 		<p:column headerText="Parcial 2">
-			<h:outputText value="5" />
+			<h:outputText value="#{coco.nota}" />
 		</p:column>
 		
 		<p:column headerText="Recup materia">
-			<h:outputText value="5" />
+			<h:outputText value="#{coco.nota}" />
 		</p:column>
 		
 		<p:column headerText="Nota Final">
-			<h:outputText value="5" />
+			<h:outputText value="#{coco.nota}" />
 		</p:column>
-		
 	</p:dataTable>
 </h:form>
 

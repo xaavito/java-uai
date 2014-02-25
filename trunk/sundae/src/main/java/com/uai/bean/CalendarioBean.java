@@ -8,13 +8,15 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.LazyScheduleModel;
+import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.uai.model.Calendario;
+import com.uai.model.Examen;
 import com.uai.service.ICalendarioService;
 
 @Named("calendarioBean")
@@ -33,6 +35,7 @@ public class CalendarioBean extends BaseBean implements Serializable {
     
     private static final long serialVersionUID = 6049595702208895073L;
 	private ScheduleModel lazyEventModel;  
+	private ScheduleEvent event = new DefaultScheduleEvent(); 
   
     public CalendarioBean() {  
         lazyEventModel = new LazyScheduleModel() {  
@@ -46,10 +49,10 @@ public class CalendarioBean extends BaseBean implements Serializable {
             public void loadEvents(Date start, Date end) {  
                 clear();  
                   
-                List<Calendario> itemsCalendario = getCalendarioService().getItemsCalendario(start, end, usuarioBean.getUsr());
+                List<Examen> examenes = getCalendarioService().getItemsCalendario(start, end, usuarioBean.getUsr());
                 
-                for (Calendario calendario : itemsCalendario) {
-                	addEvent(new DefaultScheduleEvent(calendario.getDescripcion(), calendario.getFecha(), calendario.getFecha()));
+                for (Examen ex : examenes) {
+                	addEvent(new DefaultScheduleEvent(ex.getCursada().getMateria().getNombre() , ex.getFecha(), ex.getFecha()));
 				}
             }     
         };  
@@ -85,5 +88,21 @@ public class CalendarioBean extends BaseBean implements Serializable {
     public void setCalendarioService(ICalendarioService calendarioService) {
         this.calendarioService = calendarioService;
     }
+    
+    public void onDateSelect(SelectEvent selectEvent) {  
+        setEvent(new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject()));  
+    }
+
+    public void onEventSelect(SelectEvent selectEvent) {  
+        event = (ScheduleEvent) selectEvent.getObject();  
+    }  
+    
+	public ScheduleEvent getEvent() {
+		return event;
+	}
+
+	public void setEvent(ScheduleEvent event) {
+		this.event = event;
+	}  
 }  
 

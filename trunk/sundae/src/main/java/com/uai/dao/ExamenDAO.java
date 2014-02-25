@@ -1,8 +1,6 @@
 package com.uai.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.uai.model.Examen;
 import com.uai.model.Usuario;
 
-@Named("calendarioDAO")
-public class CalendarioDAO implements ICalendarioDAO {
+@Named("examenDAO")
+public class ExamenDAO implements IExamenDAO{
 
 	@Inject
 	@Named("baseSession")
@@ -40,31 +38,26 @@ public class CalendarioDAO implements ICalendarioDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Transactional
-	public List<Examen> getItemsCalendario(Date fechaInicio,
-			Date fechaFinal, Usuario usr) {
-		List<Examen> lista = new ArrayList<Examen>();
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		String formattedIni = formatter.format(fechaInicio);
-		String formattedFin = formatter.format(fechaFinal);
-		
-		Query query = getSessionFactory().getCurrentSession().createQuery(
-				"select ex from Examen as ex " +
-						"where ex.cursada.usuario = :usr " +
-						"and ex.fecha > :inicio and ex.fecha <:fin");
-		
+	public List<Examen> getMisExamenes(Usuario usr) {
+		List<Examen> examenes = new ArrayList<Examen>();
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"select ex from Examen as ex " +
+						"where ex.cursada.usuario = :usr");
+
+		//query.setInteger("usr", usr.getIdUsuario());
 		query.setEntity("usr", usr);
-		
-		query.setDate("inicio", fechaInicio);
-		query.setDate("fin", fechaFinal);
+
 		@SuppressWarnings("rawtypes")
 		List list = query.list();
 		for (Object obj : list) {
-			lista.add((Examen)obj);
+			examenes.add((Examen) obj);
 		}
-		
-		return lista;
+
+		return examenes;
 	}
+
 }
