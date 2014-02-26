@@ -8,6 +8,32 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:form>
+	#{examenBean.initializeMisExamenes}
+	<p:dataTable var="coco" value="#{examenBean.examenes}">
+		<p:column headerText="Facultad">
+			<h:outputText value="#{coco.cursada.materia.plan.carrera.universidad.nombre}" />
+		</p:column>
+
+		<p:column headerText="Carrera">
+			<h:outputText value="#{coco.cursada.materia.plan.carrera.nombre}" />
+		</p:column>
+
+		<p:column headerText="Materia">
+			<h:outputText value="#{coco.cursada.materia.nombre}" />
+		</p:column>
+		
+		<p:column headerText="Fecha Cursada">
+			<h:outputText value="#{coco.fecha}" />
+		</p:column>
+
+		<p:column headerText="Tipo Examen">
+			<h:outputText value="#{coco.tipoExamen.descripcion}" />
+		</p:column>
+		
+		<p:column headerText="Nota">
+			<h:outputText value="#{coco.nota}" />
+		</p:column>
+	</p:dataTable>
 </h:form>
 
 </html>

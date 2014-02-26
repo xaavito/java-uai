@@ -2,9 +2,9 @@ package com.uai.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,8 +18,10 @@ public class Materia {
 	private int idMateria;
 	private String nombre;
 	private Plann plan;
+	private List<Materia> materiasCoRelativas;
+	//private String estado;
 	private List<Materia> materiasPreRelativas;
-	//private List<Materia> materiasPostRelativas;
+	
 	
 	public Materia(){}
 
@@ -53,29 +55,35 @@ public class Materia {
 		this.plan = plan;
 	}
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="Materia_Correlatividad", 
                 joinColumns={@JoinColumn(name="idMateria")}, 
                 inverseJoinColumns={@JoinColumn(name="idMateriaCorr")})
+	public List<Materia> getMateriasCoRelativas() {
+		return materiasCoRelativas;
+	}
+
+	
+	public void setMateriasCoRelativas(List<Materia> materiasPreRelativas) {
+		this.materiasCoRelativas = materiasPreRelativas;
+	}
+	
+	@ManyToMany(mappedBy="materiasCoRelativas", fetch=FetchType.EAGER)
 	public List<Materia> getMateriasPreRelativas() {
 		return materiasPreRelativas;
 	}
 
-	public void setMateriasPreRelativas(List<Materia> materiasPreRelativas) {
-		this.materiasPreRelativas = materiasPreRelativas;
-	}
-	/*
-	 * INVESTIGAR ESTO... REALMENTE ME GUSTARIA QUE ANDE PARA ATRAS Y ADELANTE.
-	@ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="Materia_Correlatividad", 
-                joinColumns={@JoinColumn(name="idMateria")}, 
-                inverseJoinColumns={@JoinColumn(name="idMateriaPre")})
-	public List<Materia> getMateriasPostRelativas() {
-		return materiasPostRelativas;
+	public void setMateriasPreRelativas(List<Materia> materiasPostRelativas) {
+		this.materiasPreRelativas = materiasPostRelativas;
 	}
 
-	public void setMateriasPostRelativas(List<Materia> materiasPostRelativas) {
-		this.materiasPostRelativas = materiasPostRelativas;
+	/*
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	*/
 }

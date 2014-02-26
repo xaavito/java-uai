@@ -34,7 +34,7 @@ public class Tipo_Examen {
 		this.descripcion = descripcion;
 	}
 
-	@OneToMany(mappedBy="examen")
+	@OneToMany(mappedBy="tipoExamen")
 	public List<Examen> getExamenes() {
 		return examenes;
 	}

@@ -14,16 +14,18 @@
 
 <p:layout fullPage="true">
 
-	<p:dialog widgetVar="eventDialog" header="Fecha" showEffect="clip" hideEffect="clip">  
-        <h:panelGrid id="eventDetails" columns="2">  
-            <h:outputLabel for="title" value="Title:" />  
-            <p:outputLabel id="title" value="#{calendarioBean.event.title}"/>    
-            <p:outputLabel id="start" value="#{calendarioBean.event.startDate}" mask="99/99/9999"/>
-            <p:outputLabel id="end" value="#{calendarioBean.event.endDate}" mask="99/99/9999"/>
-            
-        </h:panelGrid>  
-    </p:dialog>
-    
+	<p:dialog widgetVar="eventDialog" header="Fecha" showEffect="clip"
+		hideEffect="clip">
+		<h:panelGrid id="eventDetails" columns="2">
+			<h:outputLabel for="title" value="Title:" />
+			<p:outputLabel id="title" value="#{calendarioBean.event.title}" />
+			<p:outputLabel id="start" value="#{calendarioBean.event.startDate}"
+				mask="99/99/9999" />
+			<p:outputLabel id="end" value="#{calendarioBean.event.endDate}"
+				mask="99/99/9999" />
+		</h:panelGrid>
+	</p:dialog>
+
 	<p:layoutUnit position="north" size="100" resizable="true"
 		closable="true" collapsible="true">
 		<h:outputText value="Bienvenido #{usuarioBean.name}"
@@ -52,6 +54,8 @@
 				<p:submenu label="Materias">
 					<p:menuitem value="Materias" update=":principal"
 						action="#{navigationBean.materias}" icon="ui-icon-disk" />
+					<p:menuitem value="Mis Materias" update=":principal"
+						action="#{navigationBean.misMaterias}" icon="ui-icon-disk" />
 				</p:submenu>
 				<p:submenu label="Examenes">
 					<p:menuitem value="Buscar" update=":principal"
@@ -67,12 +71,12 @@
 			style="width:300px; font-size:small" />
 		<p:schedule value="#{calendarioBean.lazyEventModel}"
 			style="width:310px; font-size:xx-small">
-			<p:ajax event="dateSelect" listener="#{calendarioBean.onDateSelect}" ajax="true" update="eventDetails" oncomplete="eventDialog.show()" />
-			<p:ajax event="eventSelect" listener="#{calendarioBean.onEventSelect}" ajax="true" update="eventDetails" oncomplete="eventDialog.show()" />  
+			<p:ajax event="dateSelect" listener="#{calendarioBean.onDateSelect}"
+				ajax="true" update="eventDetails" oncomplete="eventDialog.show()" />
+			<p:ajax event="eventSelect"
+				listener="#{calendarioBean.onEventSelect}" ajax="true"
+				update="eventDetails" oncomplete="eventDialog.show()" />
 		</p:schedule>
-		
-		  
-	
 	</p:layoutUnit>
 
 	<p:layoutUnit position="center" size="400" style="font-size:small">
@@ -80,12 +84,6 @@
 			<ui:include src="#{navigationBean.pageName}.xhtml" />
 		</h:panelGroup>
 	</p:layoutUnit>
-	<!--  
-	    <p:layoutUnit id="principal" position="center">
-	      
-	        <ui:insert name="content">Aca que iria??? </ui:insert>  
-	    </p:layoutUnit>  
-  -->
 </p:layout>
 
 </html>
