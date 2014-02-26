@@ -37,6 +37,10 @@ public class NavigationBean extends BaseBean{
     	this.pageName = "materias";
     }
     
+    public void misMaterias() {
+    	this.pageName = "misMaterias";
+    }
+    
     public void examenes() {
     	this.pageName = "examenes";
     }

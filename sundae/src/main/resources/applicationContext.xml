@@ -90,6 +90,10 @@
 	<bean class="com.uai.model.Examen" id="examen" scope="session"/>
 	<bean class="com.uai.dao.ExamenDAO" id="examenDAO" scope="session"/>
 	
+	<bean class="com.uai.bean.MateriaBean" id="materiaBean" scope="session"/>
+	<bean class="com.uai.service.MateriaService" id="materiaService" scope="session"/>
+	<bean class="com.uai.model.Materia" id="materia" scope="session"/>
+	<bean class="com.uai.dao.MateriaDAO" id="materiaDAO" scope="session"/>
 	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
