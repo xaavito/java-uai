@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Universidad {
@@ -54,7 +58,8 @@ public class Universidad {
 		this.nro = nro;
 	}
 	
-	@OneToMany(mappedBy="universidad")
+	@OneToMany(mappedBy="universidad", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Carrera> getCarreas() {
 		return carreas;
 	}

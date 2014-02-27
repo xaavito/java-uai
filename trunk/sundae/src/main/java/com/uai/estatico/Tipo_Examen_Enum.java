@@ -5,7 +5,7 @@ public enum Tipo_Examen_Enum {
 	PARCIAL2(2),
 	RECUPERATORIO(3),
 	RECUPERATORIO_MATERIA(4),
-	FINAL(3);
+	FINAL(5);
 	
 	private int value;
 

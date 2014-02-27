@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Plann {
@@ -50,7 +54,8 @@ public class Plann {
 		this.carrera = carrera;
 	}
 
-	@OneToMany(mappedBy="plan")
+	@OneToMany(mappedBy="plan", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Materia> getMaterias() {
 		return materias;
 	}
@@ -59,7 +64,8 @@ public class Plann {
 		this.materias = materias;
 	}
 
-	@OneToMany(mappedBy="plan")
+	@OneToMany(mappedBy="plan", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
