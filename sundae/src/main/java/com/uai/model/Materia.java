@@ -11,6 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.uai.estatico.Estado_Materia_Enum;
+import com.uai.estatico.Tipo_Examen_Enum;
 
 @Entity
 public class Materia {
@@ -19,8 +27,9 @@ public class Materia {
 	private String nombre;
 	private Plann plan;
 	private List<Materia> materiasCoRelativas;
-	//private String estado;
 	private List<Materia> materiasPreRelativas;
+	private String estado;
+	private List<Cursada> cursadas;
 	
 	
 	public Materia(){}
@@ -59,6 +68,7 @@ public class Materia {
     @JoinTable(name="Materia_Correlatividad", 
                 joinColumns={@JoinColumn(name="idMateria")}, 
                 inverseJoinColumns={@JoinColumn(name="idMateriaCorr")})
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Materia> getMateriasCoRelativas() {
 		return materiasCoRelativas;
 	}
@@ -69,6 +79,7 @@ public class Materia {
 	}
 	
 	@ManyToMany(mappedBy="materiasCoRelativas", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Materia> getMateriasPreRelativas() {
 		return materiasPreRelativas;
 	}
@@ -77,13 +88,42 @@ public class Materia {
 		this.materiasPreRelativas = materiasPostRelativas;
 	}
 
-	/*
+	@Transient
 	public String getEstado() {
+		estado = Estado_Materia_Enum.NO_DISPONIBLE.getValue();
+		if (getMateriasPreRelativas().isEmpty()) {
+			estado = Estado_Materia_Enum.DISPONIBLE.getValue();
+		}
+		for (Materia mat : getMateriasPreRelativas()) {
+			for (Cursada cur : mat.cursadas) {
+				for (Examen ex : cur.getExamenes()) {
+					if (ex.getNota() >= 4 && ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL.getValue()) {
+						estado = Estado_Materia_Enum.DISPONIBLE.getValue();
+					}
+				}
+			}
+		}
+		for (Cursada cur : getCursadas()) {
+			for (Examen ex : cur.getExamenes()) {
+				if (ex.getNota() >= 4 && ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL.getValue()) {
+					estado = Estado_Materia_Enum.APROBADA.getValue();
+				}
+			}
+		}
 		return estado;
 	}
 
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	*/
+
+	@OneToMany(mappedBy="materia", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
+	public List<Cursada> getCursadas() {
+		return cursadas;
+	}
+
+	public void setCursadas(List<Cursada> cursadas) {
+		this.cursadas = cursadas;
+	}
 }

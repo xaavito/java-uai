@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Dia_Cursada {
@@ -60,7 +64,8 @@ public class Dia_Cursada {
 		this.cursada = cursada;
 	}
 
-	@OneToMany(mappedBy="dia_Cursada")
+	@OneToMany(mappedBy="dia_Cursada", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Fecha_Cursada> getFechasCursadas() {
 		return fechasCursadas;
 	}

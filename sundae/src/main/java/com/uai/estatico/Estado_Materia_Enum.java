@@ -1,6 +1,7 @@
 package com.uai.estatico;
 
 public enum Estado_Materia_Enum {
+	NO_DISPONIBLE("NO_DISPONIBLE"),
 	DISPONIBLE("DISPONIBLE"),
 	CURSADA("CURSADA"),
 	RECUPERATORIO("RECUPERATORIO"),

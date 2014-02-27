@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Tipo_Usuario {
@@ -36,7 +40,8 @@ public class Tipo_Usuario {
 		this.descripcion = descripcion;
 	}
 	
-	@OneToMany(mappedBy="tipo_Usuario")
+	@OneToMany(mappedBy="tipo_Usuario", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SUBSELECT)
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
