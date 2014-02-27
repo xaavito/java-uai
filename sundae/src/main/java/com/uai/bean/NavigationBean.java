@@ -45,6 +45,10 @@ public class NavigationBean extends BaseBean{
     	this.pageName = "examenes";
     }
     
+    public void cursada() {
+    	this.pageName = "cursada";
+    }
+    
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }

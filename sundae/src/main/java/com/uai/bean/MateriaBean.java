@@ -1,5 +1,6 @@
 package com.uai.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,6 +9,9 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import com.uai.estatico.Tipo_Examen_Enum;
+import com.uai.model.Cursada;
+import com.uai.model.Examen;
 import com.uai.model.Materia;
 import com.uai.service.IMateriaService;
 
@@ -26,6 +30,7 @@ public class MateriaBean {
     //private Examen examen;
     private List<Materia> materias;
     private List<Materia> allMaterias;
+    private List<Materia> materiasCursables;
     
     public MateriaBean() { 
     	System.out.println("cococo");
@@ -35,12 +40,24 @@ public class MateriaBean {
     	System.out.println("INICILIZANDO Examenes!!!!!-----------------------------------");
     	setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
     	setAllMaterias(getMateriaService().getAllMaterias(usuarioBean.getUsr()));
-    	for (Materia mat : materias) {
-    		for (Materia mat2 : mat.getMateriasCoRelativas()) {
-    			System.out.println(mat2.getNombre());
-				
+    	List<Materia> materias = getAllMaterias();
+    	if (materias.size() > 0) {
+    		materiasCursables = new ArrayList<Materia>();
+    		for (Materia materia : materias) {
+				for (Cursada cur : materia.getCursadas()) {
+					for (Examen ex : cur.getExamenes()) {
+						if (ex.getNota() >= 4 && ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL.getValue()) {
+							materiasCursables.add(materia);
+						}
+					}
+				} 
+				if (materia.getMateriasPreRelativas().isEmpty()) {
+					materiasCursables.add(materia);
+	    		}
 			}
-		}
+    		
+    	}
+
     	return null;
     }
     
@@ -67,5 +84,13 @@ public class MateriaBean {
 
 	public void setAllMaterias(List<Materia> allMaterias) {
 		this.allMaterias = allMaterias;
+	}
+
+	public List<Materia> getMateriasCursables() {
+		return materiasCursables;
+	}
+
+	public void setMateriasCursables(List<Materia> materiasCursables) {
+		this.materiasCursables = materiasCursables;
 	}
 }

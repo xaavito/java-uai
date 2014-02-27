@@ -10,5 +10,4 @@ public interface IMateriaService {
 	List<Materia> getMaterias(Usuario usr);
 
 	List<Materia> getAllMaterias(Usuario usr);
-
 }

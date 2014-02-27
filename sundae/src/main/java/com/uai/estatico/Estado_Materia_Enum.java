@@ -5,7 +5,8 @@ public enum Estado_Materia_Enum {
 	DISPONIBLE("DISPONIBLE"),
 	CURSADA("CURSADA"),
 	RECUPERATORIO("RECUPERATORIO"),
-	APROBADA("APROBADA");
+	APROBADA("APROBADA"),
+	CURSANDO("CURSANDO");
 	
 	private String value;
 
