@@ -23,5 +23,4 @@ public class MateriaService implements IMateriaService{
 	public List<Materia> getAllMaterias(Usuario usr) {
 		return materiaDAO.getAllMaterias(usr);
 	}
-
 }

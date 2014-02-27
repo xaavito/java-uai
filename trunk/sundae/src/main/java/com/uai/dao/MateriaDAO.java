@@ -76,5 +76,4 @@ public class MateriaDAO implements IMateriaDAO{
 
 		return materias;
 	}
-
 }

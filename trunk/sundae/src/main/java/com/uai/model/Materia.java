@@ -1,5 +1,6 @@
 package com.uai.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -108,6 +109,12 @@ public class Materia {
 				if (ex.getNota() >= 4 && ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL.getValue()) {
 					estado = Estado_Materia_Enum.APROBADA.getValue();
 				}
+			}
+		}
+		for (Cursada cur : getCursadas()) {
+			Date hoy = new Date();
+			if (hoy.after(cur.getFechaInicioCursada()) && hoy.before(cur.getFechaFinCursada())) {
+				estado = Estado_Materia_Enum.CURSANDO.getValue();
 			}
 		}
 		return estado;
