@@ -18,57 +18,60 @@ import com.uai.service.IMateriaService;
 @Named("materiaBean")
 @Scope("session")
 public class MateriaBean {
-	//Spring User Service is injected...
-    @Inject
-    @Named("materiaService")
-    IMateriaService materiaService;
-    
-    @Inject
-    @Named("usuarioBean")
-    UsuarioBean usuarioBean;
-    
-    //private Examen examen;
-    private List<Materia> materias;
-    private List<Materia> allMaterias;
-    private List<Materia> materiasCursables;
-    
-    public MateriaBean() { 
-    	System.out.println("cococo");
-    }  
-    
-    public String getInitializeMaterias() {
-    	System.out.println("INICILIZANDO Examenes!!!!!-----------------------------------");
-    	setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
-    	setAllMaterias(getMateriaService().getAllMaterias(usuarioBean.getUsr()));
-    	List<Materia> materias = getAllMaterias();
-    	if (materias.size() > 0) {
-    		materiasCursables = new ArrayList<Materia>();
-    		for (Materia materia : materias) {
+	// Spring User Service is injected...
+	@Inject
+	@Named("materiaService")
+	IMateriaService materiaService;
+
+	@Inject
+	@Named("usuarioBean")
+	UsuarioBean usuarioBean;
+
+	// private Examen examen;
+	private List<Materia> materias;
+	private List<Materia> allMaterias;
+	private List<Materia> materiasCursables;
+	private List<Materia> cursada;
+	private Materia materia;
+
+	public MateriaBean() {
+		System.out.println("cococo");
+	}
+
+	public String getInitializeMaterias() {
+		System.out
+				.println("INICILIZANDO Examenes!!!!!-----------------------------------");
+		setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
+		setAllMaterias(getMateriaService().getAllMaterias(usuarioBean.getUsr()));
+		List<Materia> materias = getAllMaterias();
+		if (materias.size() > 0) {
+			materiasCursables = new ArrayList<Materia>();
+			for (Materia materia : materias) {
 				for (Cursada cur : materia.getCursadas()) {
 					for (Examen ex : cur.getExamenes()) {
-						if (ex.getNota() >= 4 && ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL.getValue()) {
+						if (ex.getNota() >= 4
+								&& ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL
+										.getValue()) {
 							materiasCursables.add(materia);
 						}
 					}
-				} 
+				}
 				if (materia.getMateriasPreRelativas().isEmpty()) {
 					materiasCursables.add(materia);
-	    		}
+				}
 			}
-    		
-    	}
+		}
+		return null;
+	}
 
-    	return null;
-    }
-    
-    public IMateriaService getMateriaService() {
-        return materiaService;
-    }
- 
-    @Autowired
-    public void setMateriaService(IMateriaService materiaService) {
-        this.materiaService = materiaService;
-    }
+	public IMateriaService getMateriaService() {
+		return materiaService;
+	}
+
+	@Autowired
+	public void setMateriaService(IMateriaService materiaService) {
+		this.materiaService = materiaService;
+	}
 
 	public List<Materia> getMaterias() {
 		return materias;
@@ -92,5 +95,26 @@ public class MateriaBean {
 
 	public void setMateriasCursables(List<Materia> materiasCursables) {
 		this.materiasCursables = materiasCursables;
+	}
+
+	public List<Materia> getCursada() {
+		return cursada;
+	}
+
+	public void setCursada(List<Materia> cursada) {
+		this.cursada = cursada;
+	}
+
+	public String doNothng() {
+		System.out.println("veremos");
+		return "a";
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
 	}
 }
