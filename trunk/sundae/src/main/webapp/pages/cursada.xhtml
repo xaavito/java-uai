@@ -9,7 +9,17 @@
 
 <h:form>
 	#{materiaBean.initializeMaterias}
-	<p:dataTable var="coco" value="#{materiaBean.allMaterias}">
+	<h:outputText value="Materias Posibles: " />  
+        <p:selectManyCheckbox id="matPosibles" value="#{materiaBean.cursada}"   
+            layout="pageDirection">  
+            <f:selectItems value="#{materiaBean.materiasCursables}" var="pepe" itemLabel="#{pepe.nombre}" itemValue="#{pepe.nombre}" />  
+        </p:selectManyCheckbox>
+        
+        <p:separator />  
+  
+    <p:commandButton value="Confirmar" action="#{materiaBean.doNothng}" update="cursada"/>  
+    
+	<p:dataTable id="cursada" var="coco" value="#{materiaBean.cursada}">
 		<p:column headerText="Facultad">
 			<h:outputText value="#{coco.plan.carrera.universidad.nombre}" />
 		</p:column>
