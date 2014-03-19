@@ -9,17 +9,42 @@
 
 <h:form>
 	#{materiaBean.initializeMaterias}
-	<h:outputText value="Materias Posibles: " />  
-        <p:selectManyCheckbox id="matPosibles" value="#{materiaBean.cursada}"   
-            layout="pageDirection">  
-            <f:selectItems value="#{materiaBean.materiasCursables}" var="pepe" itemLabel="#{pepe.nombre}" itemValue="#{pepe.nombre}" />  
-        </p:selectManyCheckbox>
-        
-        <p:separator />  
+	<h:outputText value="Materias Posibles: " /> 
+	<p:dataTable id="multiCars" var="coco" value="#{materiaBean.materiasCursables}" paginator="true" rows="10"  
+                 rowKey="#{coco.nombre}" selection="#{materiaBean.cursadaActual}">  
+  
+        <f:facet name="header">  
+            Materias Cursables  
+        </f:facet>  
+  
+        <p:column selectionMode="multiple" style="width:2%" />  
+  
+  		<p:column headerText="Facultad">
+			#{coco.plan.carrera.universidad.nombre}
+		</p:column>
+
+		<p:column headerText="Carrera">
+			#{coco.plan.carrera.nombre}
+		</p:column>
+
+		<p:column headerText="Materia">
+			#{coco.nombre}
+		</p:column>
+		
+		<p:column headerText="Estado">
+			#{coco.estado}
+		</p:column>
+    </p:dataTable> 
+  
+    <p:separator />  
   
     <p:commandButton value="Confirmar" action="#{materiaBean.doNothng}" update="cursada"/>  
     
-	<p:dataTable id="cursada" var="coco" value="#{materiaBean.cursada}">
+	<p:dataTable id="cursada" var="coco" value="#{materiaBean.cursadaActual}">
+		<f:facet name="header">  
+            A Cursar
+        </f:facet>  
+        
 		<p:column headerText="Facultad">
 			<h:outputText value="#{coco.plan.carrera.universidad.nombre}" />
 		</p:column>

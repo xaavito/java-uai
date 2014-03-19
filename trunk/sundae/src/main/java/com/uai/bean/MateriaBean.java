@@ -1,5 +1,6 @@
 package com.uai.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,12 @@ import com.uai.service.IMateriaService;
 
 @Named("materiaBean")
 @Scope("session")
-public class MateriaBean {
+public class MateriaBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8450581343904432080L;
+
 	// Spring User Service is injected...
 	@Inject
 	@Named("materiaService")
@@ -31,7 +37,7 @@ public class MateriaBean {
 	private List<Materia> materias;
 	private List<Materia> allMaterias;
 	private List<Materia> materiasCursables;
-	private List<Materia> cursada;
+	private List<Materia> cursadaActual;
 	private Materia materia;
 
 	public MateriaBean() {
@@ -97,12 +103,12 @@ public class MateriaBean {
 		this.materiasCursables = materiasCursables;
 	}
 
-	public List<Materia> getCursada() {
-		return cursada;
+	public List<Materia> getCursadaActual() {
+		return cursadaActual;
 	}
 
-	public void setCursada(List<Materia> cursada) {
-		this.cursada = cursada;
+	public void setCursadaActual(List<Materia> cursada) {
+		this.cursadaActual = cursada;
 	}
 
 	public String doNothng() {
