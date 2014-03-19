@@ -133,4 +133,9 @@ public class Materia {
 	public void setCursadas(List<Cursada> cursadas) {
 		this.cursadas = cursadas;
 	}
+
+//	@Override
+//	public String toString() {
+//		return this.nombre;
+//	}
 }
