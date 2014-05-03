@@ -1,4 +1,4 @@
-package com.uai.service;
+package com.uai.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;

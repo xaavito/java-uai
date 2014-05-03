@@ -1,4 +1,4 @@
-package com.uai.service;
+package com.uai.utils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
