@@ -7,60 +7,78 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:form>
-	#{materiaBean.initializeMaterias}
-	<h:outputText value="Materias Posibles: " /> 
-	<p:dataTable id="multiCars" var="coco" value="#{materiaBean.materiasCursables}" paginator="true" rows="10"  
-                 rowKey="#{coco.nombre}" selection="#{materiaBean.cursadaActual}">  
-  
-        <f:facet name="header">  
-            Materias Cursables  
-        </f:facet>  
-  
-        <p:column selectionMode="multiple" style="width:2%" />  
-  
-  		<p:column headerText="Facultad">
-			#{coco.plan.carrera.universidad.nombre}
-		</p:column>
-
-		<p:column headerText="Carrera">
-			#{coco.plan.carrera.nombre}
-		</p:column>
-
-		<p:column headerText="Materia">
-			#{coco.nombre}
-		</p:column>
+	<h:form>
+		#{materiaBean.initializeMaterias}
+		<p:dataTable id="multiCars" var="coco"
+			value="#{materiaBean.materiasCursables}" paginator="true" rows="10"
+			rowKey="#{coco.nombre}" selection="#{materiaBean.cursadaActual}">
+	
+			<f:facet name="header">  
+	            Materias Cursables  
+	        </f:facet>
+	
+			<p:column selectionMode="multiple" style="width:2%" />
+	
+			<p:column headerText="Facultad">
+				#{coco.plan.carrera.universidad.nombre}
+			</p:column>
+	
+			<p:column headerText="Carrera">
+				#{coco.plan.carrera.nombre}
+			</p:column>
+	
+			<p:column headerText="Materia">
+				#{coco.nombre}
+			</p:column>
+	
+			<p:column headerText="Estado">
+				#{coco.estado}
+			</p:column>
+		</p:dataTable>
+	
+		<p:separator />
+	
+		<p:commandButton value="Confirmar" action="#{materiaBean.actualizar}" update="cursadaForm"/>
+		<p:separator />
 		
-		<p:column headerText="Estado">
-			#{coco.estado}
-		</p:column>
-    </p:dataTable> 
-  
-    <p:separator />  
-  
-    <p:commandButton value="Confirmar" action="#{materiaBean.doNothng}" update="cursada"/>  
-    
-	<p:dataTable id="cursada" var="coco" value="#{materiaBean.cursadaActual}">
-		<f:facet name="header">  
-            A Cursar
-        </f:facet>  
-        
-		<p:column headerText="Facultad">
-			<h:outputText value="#{coco.plan.carrera.universidad.nombre}" />
-		</p:column>
-
-		<p:column headerText="Carrera">
-			<h:outputText value="#{coco.plan.carrera.nombre}" />
-		</p:column>
-
-		<p:column headerText="Materia">
-			<h:outputText value="#{coco.nombre}" />
-		</p:column>
+		<h:outputText value="Tipo Cursada: " />
+		<!--
 		
-		<p:column headerText="Estado">
-			<h:outputText value="#{coco.estado}" />
-		</p:column>
-	</p:dataTable>
-</h:form>
+		<p:selectOneButton value="#{materiaBean.tipoCursada}">  
+            <f:selectItems value="#{materiaBean.tiposCursada}" var="cursadaSeleccionada"
+				itemLabel="#{cursadaSeleccionada.descripcion}" itemValue="#{cursadaSeleccionada}"/>
+        </p:selectOneButton>
+         -->
+         
+		<p:selectOneMenu value="#{materiaBean.tipoCursada}" id="tipoCursadaCombo" effect="fade" converter="cursadaConverter">
+			<f:selectItems value="#{materiaBean.tiposCursada}" var="tipoCursada"
+				itemLabel="#{tipoCursada.descripcion}" itemValue="#{tipoCursada}"/>
+		</p:selectOneMenu>
+		 
+		<p:dataTable id="cursadaForm" var="coco"
+			value="#{materiaBean.cursadaActual}">
+			<f:facet name="header">  
+	            A Cursar
+	        </f:facet>
+	
+			<p:column headerText="Facultad">
+				<h:outputText value="#{coco.plan.carrera.universidad.nombre}" />
+			</p:column>
+	
+			<p:column headerText="Carrera">
+				<h:outputText value="#{coco.plan.carrera.nombre}" />
+			</p:column>
+	
+			<p:column headerText="Materia">
+				<h:outputText value="#{coco.nombre}" />
+			</p:column>
+	
+			<p:column headerText="Estado">
+				<h:outputText value="#{coco.estado}" />
+			</p:column>
+		</p:dataTable>
+	
+		<p:commandButton value="Guardar" action="#{materiaBean.saveCursada}"/>
+	</h:form>
 
 </html>

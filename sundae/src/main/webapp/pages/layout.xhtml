@@ -7,88 +7,91 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo"
-		rel="stylesheet" type="text/css" />
-		<link rel="shortcut icon" href="Icon.ico"/>
-</h:head>
+	<h:head>
+		<link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo"
+			rel="stylesheet" type="text/css" />
+			<link rel="shortcut icon" href="Icon.ico"/>
+	</h:head>
 
-<p:layout fullPage="true">
-
-	<p:dialog widgetVar="eventDialog" header="Fecha" showEffect="clip"
-		hideEffect="clip">
-		<h:panelGrid id="eventDetails" columns="2">
-			<h:outputLabel for="title" value="Title:" />
-			<p:outputLabel id="title" value="#{calendarioBean.event.title}" />
-			<p:outputLabel id="start" value="#{calendarioBean.event.startDate}"
-				mask="99/99/9999" />
-			<p:outputLabel id="end" value="#{calendarioBean.event.endDate}"
-				mask="99/99/9999" />
-		</h:panelGrid>
-	</p:dialog>
-
-	<p:layoutUnit position="north" size="100" resizable="true"
-		closable="true" collapsible="true">
-		<h:outputText value="Bienvenido #{usuarioBean.name}"
-			style="float:right" />
-		<p:clock style="float:right" />
-	</p:layoutUnit>
-
-	<p:layoutUnit position="south" size="100" resizable="true"
-		closable="true" collapsible="true">
-		<h:outputText value="Aca no se que meter" />
-	</p:layoutUnit>
-
-	<p:layoutUnit position="west" size="150" header="Principal"
-		resizable="true" closable="false" collapsible="false"
-		style="font-size:small">
-		<h:form>
-			<p:panelMenu style="width:150">
-				<p:submenu label="Carrera">
-					<p:menuitem value="Nueva Carrera"
-						actionListener="#{navigationBean.nuevaCarrera}" ajax="false"
-						update=":principal" icon="ui-icon-disk" />
-					<p:menuitem value="Mi Carrera"
-						actionListener="#{navigationBean.miCarrera}" ajax="false"
-						update=":principal" icon="ui-icon-disk" />
-				</p:submenu>
-				<p:submenu label="Materias">
-					<p:menuitem value="Materias" update=":principal"
-						action="#{navigationBean.materias}" icon="ui-icon-disk" />
-					<p:menuitem value="Mis Materias" update=":principal"
-						action="#{navigationBean.misMaterias}" icon="ui-icon-disk" />
-				</p:submenu>
-				<p:submenu label="Examenes">
-					<p:menuitem value="Buscar" update=":principal"
-						action="#{navigationBean.examenes}" icon="ui-icon-disk" />
-				</p:submenu>
-				<p:submenu label="Cursada">
-					<p:menuitem value="Cursada" update=":principal"
-						action="#{navigationBean.cursada}" icon="ui-icon-disk" />
-				</p:submenu>
-			</p:panelMenu>
-		</h:form>
-	</p:layoutUnit>
-
-	<p:layoutUnit position="east" style="width:100%; font-size:xx-small"
-		resizable="false" closable="false" collapsible="false" effect="drop">
-		<h:outputText value="Examenes Pendientes"
-			style="width:300px; font-size:small" />
-		<p:schedule value="#{calendarioBean.lazyEventModel}"
-			style="width:310px; font-size:xx-small">
-			<p:ajax event="dateSelect" listener="#{calendarioBean.onDateSelect}"
-				ajax="true" update="eventDetails" oncomplete="eventDialog.show()" />
-			<p:ajax event="eventSelect"
-				listener="#{calendarioBean.onEventSelect}" ajax="true"
-				update="eventDetails" oncomplete="eventDialog.show()" />
-		</p:schedule>
-	</p:layoutUnit>
-
-	<p:layoutUnit position="center" size="400" style="font-size:small">
-		<h:panelGroup id="principal">
-			<ui:include src="#{navigationBean.pageName}.xhtml" />
-		</h:panelGroup>
-	</p:layoutUnit>
-</p:layout>
+	<p:layout fullPage="true">
+		<p:dialog widgetVar="eventDialog" header="Fecha" showEffect="clip"
+			hideEffect="clip">
+			<h:panelGrid id="eventDetails" columns="2">
+				<h:outputLabel for="title" value="Title:" />
+				<p:outputLabel id="title" value="#{calendarioBean.event.title}" />
+				<p:outputLabel id="start" value="#{calendarioBean.event.startDate}"
+					mask="99/99/9999" />
+				<p:outputLabel id="end" value="#{calendarioBean.event.endDate}"
+					mask="99/99/9999" />
+			</h:panelGrid>
+		</p:dialog>
+	
+		<p:layoutUnit position="north" size="100" resizable="true"
+			closable="true" collapsible="true">
+			<h:outputText value="Bienvenido #{usuarioBean.name}"
+				style="float:right" />
+			<p:clock style="float:right" />
+		</p:layoutUnit>
+	
+		<p:layoutUnit position="south" size="100" resizable="true"
+			closable="true" collapsible="true">
+			<h:outputText value="Aca no se que meter" />
+		</p:layoutUnit>
+	
+		<p:layoutUnit position="west" size="150" header="Principal"
+			resizable="true" closable="false" collapsible="false"
+			style="font-size:small">
+			<h:form>
+				<p:panelMenu style="width:150">
+					<p:submenu label="Carrera">
+						<p:menuitem value="Anotada"
+							actionListener="#{navigationBean.nuevaCarrera}" ajax="false"
+							update=":principal" icon="ui-icon-disk" />
+						<p:menuitem value="Mi Historia"
+							actionListener="#{navigationBean.miCarrera}" ajax="false"
+							update=":principal" icon="ui-icon-disk" />
+					</p:submenu>
+					<p:submenu label="Materias">
+						<p:menuitem value="Todas" update=":principal"
+							action="#{navigationBean.materias}" icon="ui-icon-disk" />
+						<p:menuitem value="Mis Materias" update=":principal"
+							action="#{navigationBean.misMaterias}" icon="ui-icon-disk" />
+					</p:submenu>
+					<p:submenu label="Examenes">
+						<p:menuitem value="Historico" update=":principal"
+							action="#{navigationBean.examenes}" icon="ui-icon-disk" />
+						<p:menuitem value="Agregar" update=":principal"
+							action="#{navigationBean.agregarExamenes}" icon="ui-icon-disk" />
+					</p:submenu>
+					<p:submenu label="Cursada">
+						<p:menuitem value="Anotada" update=":principal"
+							action="#{navigationBean.cursada}" icon="ui-icon-disk" />
+						<p:menuitem value="Actual" update=":principal"
+							action="#{navigationBean.cursada}" icon="ui-icon-disk" />
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+	
+		<p:layoutUnit position="east" style="width:100%; font-size:xx-small"
+			resizable="false" closable="false" collapsible="false" effect="drop">
+			<h:outputText value="Examenes Pendientes"
+				style="width:300px; font-size:small" />
+			<p:schedule value="#{calendarioBean.lazyEventModel}"
+				style="width:310px; font-size:xx-small">
+				<p:ajax event="dateSelect" listener="#{calendarioBean.onDateSelect}"
+					ajax="true" update="eventDetails" oncomplete="eventDialog.show()" />
+				<p:ajax event="eventSelect"
+					listener="#{calendarioBean.onEventSelect}" ajax="true"
+					update="eventDetails" oncomplete="eventDialog.show()" />
+			</p:schedule>
+		</p:layoutUnit>
+	
+		<p:layoutUnit position="center" size="400" style="font-size:small">
+			<h:panelGroup id="principal">
+				<ui:include src="#{navigationBean.pageName}.xhtml" />
+			</h:panelGroup>
+		</p:layoutUnit>
+	</p:layout>
 
 </html>
