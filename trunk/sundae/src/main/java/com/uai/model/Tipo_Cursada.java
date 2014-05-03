@@ -21,6 +21,10 @@ public class Tipo_Cursada {
 	private List<Cursada> cursadas;
 	
 	public Tipo_Cursada(){}
+	
+	public Tipo_Cursada(String desc){
+		this.descripcion = desc;
+	}
 
 	@Id
 	@GeneratedValue

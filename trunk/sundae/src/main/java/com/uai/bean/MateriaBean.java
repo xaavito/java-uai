@@ -14,6 +14,7 @@ import com.uai.estatico.Tipo_Examen_Enum;
 import com.uai.model.Cursada;
 import com.uai.model.Examen;
 import com.uai.model.Materia;
+import com.uai.model.Tipo_Cursada;
 import com.uai.service.IMateriaService;
 
 @Named("materiaBean")
@@ -39,6 +40,8 @@ public class MateriaBean implements Serializable {
 	private List<Materia> materiasCursables;
 	private List<Materia> cursadaActual;
 	private Materia materia;
+	private Tipo_Cursada tipoCursada;
+	private List<Tipo_Cursada> tiposCursada;
 
 	public MateriaBean() {
 		System.out.println("cococo");
@@ -49,6 +52,7 @@ public class MateriaBean implements Serializable {
 				.println("INICILIZANDO Examenes!!!!!-----------------------------------");
 		setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
 		setAllMaterias(getMateriaService().getAllMaterias(usuarioBean.getUsr()));
+		setTiposCursada(getMateriaService().getTiposCursadas());
 		List<Materia> materias = getAllMaterias();
 		if (materias.size() > 0) {
 			materiasCursables = new ArrayList<Materia>();
@@ -58,7 +62,7 @@ public class MateriaBean implements Serializable {
 						if (ex.getNota() >= 4
 								&& ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL
 										.getValue()) {
-							materiasCursables.add(materia);
+							materiasCursables.addAll(materia.getMateriasCoRelativas());
 						}
 					}
 				}
@@ -111,16 +115,37 @@ public class MateriaBean implements Serializable {
 		this.cursadaActual = cursada;
 	}
 
-	public String doNothng() {
+	public String actualizar() {
 		System.out.println("veremos");
-		return "a";
+		return null;
 	}
 
+	public String saveCursada() {
+		getMateriaService().setCursada(cursadaActual, usuarioBean.getUsr(),tipoCursada);
+		return null;
+	}
+	
 	public Materia getMateria() {
 		return materia;
 	}
 
 	public void setMateria(Materia materia) {
 		this.materia = materia;
+	}
+
+	public List<Tipo_Cursada> getTiposCursada() {
+		return tiposCursada;
+	}
+
+	public void setTiposCursada(List<Tipo_Cursada> tiposCursada) {
+		this.tiposCursada = tiposCursada;
+	}
+
+	public Tipo_Cursada getTipoCursada() {
+		return tipoCursada;
+	}
+
+	public void setTipoCursada(Tipo_Cursada tipoCursada) {
+		this.tipoCursada = tipoCursada;
 	}
 }

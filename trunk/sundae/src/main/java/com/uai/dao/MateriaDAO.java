@@ -10,7 +10,9 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.uai.model.Cursada;
 import com.uai.model.Materia;
+import com.uai.model.Tipo_Cursada;
 import com.uai.model.Usuario;
 
 @Named("materiaDAO")
@@ -75,5 +77,45 @@ public class MateriaDAO implements IMateriaDAO{
 		}
 
 		return materias;
+	}
+
+    @Transactional
+	public void setCursada(List<Cursada> cursadaActual) {
+		for (Cursada materia : cursadaActual) {
+			getSessionFactory().getCurrentSession().save(materia);
+		}	
+	}
+
+	@Transactional
+	public List<Tipo_Cursada> getTiposCursadas() {
+		List<Tipo_Cursada> tiposCursada = new ArrayList<Tipo_Cursada>();
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"from Tipo_Cursada");
+
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			tiposCursada.add((Tipo_Cursada) obj);
+		}
+
+		return tiposCursada;
+	}
+
+	public Tipo_Cursada find(String value) {
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"from Tipo_Cursada as tipo where tipo.idTipoCursada= :idTipoCursada");
+		
+		query.setInteger("idTipoCursada", Integer.parseInt(value));
+
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			return (Tipo_Cursada) obj;
+		}
+		return null;
 	}
 }
