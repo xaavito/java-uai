@@ -2,29 +2,32 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-     
-    <h:head>
-	   <link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo" rel="stylesheet" type="text/css"/>
-	 
-	   <link rel="shortcut icon" href="Icon.ico"/> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-	</h:head>
-	<body> 
-  		<h:form id="loginForm" style="width: 350px; vertical-align: middle;">
-    		<p:growl id="growl" globalOnly="true"></p:growl>
-   			<p:panel header="Login" style="width: 350;" align="center">
-       			<h:panelGrid id="loginPanel" columns="2">
-		            <h:outputText value="Name"></h:outputText>
-		            <p:inputText value="#{usuarioBean.name}"></p:inputText>
-		            <h:outputText value="Password"></h:outputText>
-		            <p:password value="#{usuarioBean.pass}"></p:password>
-		            <p:commandButton value="Login" action="#{usuarioBean.login}" ajax="false"/>
-				</h:panelGrid>
-   			</p:panel>
-  		</h:form>
-	</body> 
+<h:head>
+	<link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo"
+		rel="stylesheet" type="text/css" />
+
+	<link rel="shortcut icon" href="/sundae/resources/Icon.ico" type="image/x-icon"/>
+
+</h:head>
+<body>
+	<h:form id="loginForm"
+		style="width: 350px; vertical-align: middle; margin: 0 auto">
+		<p:growl id="growl" globalOnly="true"></p:growl>
+		<p:panel header="Login" style="width: 350;" align="center">
+			<h:panelGrid id="loginPanel" columns="2">
+				<h:outputText value="Name"></h:outputText>
+				<p:inputText value="#{usuarioBean.name}"></p:inputText>
+				<h:outputText value="Password"></h:outputText>
+				<p:password value="#{usuarioBean.pass}"></p:password>
+				<p:commandButton value="Login" action="#{usuarioBean.login}"
+					ajax="false" />
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</body>
 </html>

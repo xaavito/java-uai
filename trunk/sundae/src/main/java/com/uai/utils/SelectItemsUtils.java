@@ -30,7 +30,6 @@ public final class SelectItemsUtils {
     		Object item = items.next();
             if (item instanceof Tipo_Cursada) {
             	if (((Tipo_Cursada)item).getIdTipoCursada() == Integer.parseInt(value)) {
-            		System.out.println("lalalalalalala");
             		return (Tipo_Cursada)item;
             	}
             } 
