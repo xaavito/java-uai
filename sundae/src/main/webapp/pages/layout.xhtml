@@ -10,7 +10,8 @@
 <h:head>
 	<link href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo"
 		rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" href="/sundae/resources/Icon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="/sundae/resources/favicon.png"
+		type="image/x-icon" />
 </h:head>
 
 <p:layout fullPage="true">
@@ -46,7 +47,7 @@
 				<p:submenu label="Carrera">
 					<p:menuitem value="Nueva Carrera"
 						actionListener="#{navigationBean.nuevaCarrera}" ajax="false"
-						update=":principal" icon="ui-icon-disk" />
+						update=":principal" icon="ui-icon-plus" />
 					<p:menuitem value="Mi Historia"
 						actionListener="#{navigationBean.miCarrera}" ajax="false"
 						update=":principal" icon="ui-icon-disk" />
@@ -59,19 +60,25 @@
 					<p:menuitem value="Notas" update=":principal"
 						action="#{navigationBean.notas}" icon="ui-icon-disk" />
 					<p:menuitem value="Presentismo" update=":principal"
-						action="#{navigationBean.presentismo}" icon="ui-icon-disk" />
+						action="#{navigationBean.presentismo}" icon="ui-icon-clock" />
 				</p:submenu>
 				<p:submenu label="Examenes">
 					<p:menuitem value="Historico" update=":principal"
 						action="#{navigationBean.examenes}" icon="ui-icon-disk" />
 					<p:menuitem value="Agregar" update=":principal"
-						action="#{navigationBean.agregarExamenes}" icon="ui-icon-disk" />
+						action="#{navigationBean.agregarExamenes}" icon="ui-icon-plus" />
 				</p:submenu>
 				<p:submenu label="Cursada">
 					<p:menuitem value="Anotada" update=":principal"
-						action="#{navigationBean.cursada}" icon="ui-icon-disk" />
+						action="#{navigationBean.cursada}" icon="ui-icon-plus" />
 					<p:menuitem value="Historico" update=":principal"
 						action="#{navigationBean.misCursadas}" icon="ui-icon-disk" />
+				</p:submenu>
+				<p:submenu label="Mis Datos">
+					<p:menuitem value="Mis Datos" update=":principal"
+						action="#{navigationBean.misDatos}" icon="ui-icon-home" />
+					<p:menuitem value="Salir" update=":principal"
+						action="#{navigationBean.salir}" icon="ui-icon-power" />
 				</p:submenu>
 			</p:panelMenu>
 		</h:form>
