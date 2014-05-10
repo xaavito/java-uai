@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:form>
-	#{materiaBean.initializeMaterias}
+	#{materiaBean.initializeMisMaterias}
 	<p:dataTable var="coco" value="#{materiaBean.materias}">
 		<p:column headerText="Facultad">
 			<h:outputText value="#{coco.plan.carrera.universidad.nombre}" />

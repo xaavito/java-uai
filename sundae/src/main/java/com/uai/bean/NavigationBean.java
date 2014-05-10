@@ -52,4 +52,16 @@ public class NavigationBean extends BaseBean{
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }
+    
+    public void misDatos() {
+    	this.pageName = "misDatos";
+    }
+    
+    public void presentismo() {
+    	this.pageName = "presentismo";
+    }
+    
+    public void notas() {
+    	this.pageName = "notas";
+    }
 }

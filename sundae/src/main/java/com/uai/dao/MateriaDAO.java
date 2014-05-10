@@ -46,8 +46,8 @@ public class MateriaDAO implements IMateriaDAO{
 		Query query = getSessionFactory()
 				.getCurrentSession()
 				.createQuery(
-						"select distinct(ex.cursada.materia) from Examen as ex " +
-						"where ex.cursada.usuario = :usr");
+						"select cur.materia from Cursada as cur " +
+						"where cur.usuario = :usr");
 
 		query.setEntity("usr", usr);
 
@@ -103,6 +103,7 @@ public class MateriaDAO implements IMateriaDAO{
 		return tiposCursada;
 	}
 
+	@Transactional
 	public Tipo_Cursada find(String value) {
 		Query query = getSessionFactory()
 				.getCurrentSession()
@@ -117,5 +118,24 @@ public class MateriaDAO implements IMateriaDAO{
 			return (Tipo_Cursada) obj;
 		}
 		return null;
+	}
+
+	@Transactional
+	public List<Materia> getCursadaActual(Usuario usr) {
+		List<Materia> materiasCursada = new ArrayList<Materia>();
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"select cur.materia from Cursada cur where cur.usuario = :usr");
+
+		query.setEntity("usr", usr);
+		
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			materiasCursada.add((Materia) obj);
+		}
+
+		return materiasCursada;
 	}
 }
