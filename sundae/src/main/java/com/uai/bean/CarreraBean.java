@@ -40,14 +40,21 @@ public class CarreraBean {
     
     public String getInitialize() {
     	System.out.println("INICILIZANDO Carreras!!!!!-----------------------------------");
-    	setMisCarreras(getCarreraService().getMisCarreras(usuarioBean.getUsr()));
-    	setAllCarreras(getCarreraService().getAllCarreras());
+    	if (null == getMisCarreras()) {
+    		setMisCarreras(getCarreraService().getMisCarreras(usuarioBean.getUsr()));
+    	}
+    	if (null == getAllCarreras()) {
+    		setAllCarreras(getCarreraService().getAllCarreras());
+    	}
+    	
     	return null;
     }
     
     public String getInitializeMisMaterias() {
     	System.out.println("INICILIZANDO MATERIAS!!!!!-----------------------------------");
-    	setMateriasFull(getCarreraService().getMisMaterias(usuarioBean.getUsr()));
+    	if (null == getMateriasFull()) {
+    		setMateriasFull(getCarreraService().getMisMaterias(usuarioBean.getUsr()));
+    	}
     	return null;
     }
     
