@@ -71,9 +71,11 @@ public class MateriaBean implements Serializable {
 			setCursadaActual(getMateriaService().getCursadaActual(
 					usuarioBean.getUsr()));
 		}
+		/*
 		if (null == materiasCursables) {
 			initializeMateriasCursables();
 		}
+		*/
 		return null;
 	}
 	public String getInitializeMisMaterias() {
