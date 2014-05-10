@@ -18,4 +18,6 @@ public interface IMateriaDAO {
 	List<Tipo_Cursada> getTiposCursadas();
 
 	Tipo_Cursada find(String value);
+
+	List<Materia> getCursadaActual(Usuario usr);
 }

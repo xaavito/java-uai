@@ -15,4 +15,6 @@ public interface IMateriaService {
 	void setCursada(List<Materia> cursadaActual, Usuario usuario, Tipo_Cursada tipoCursada);
 
 	List<Tipo_Cursada> getTiposCursadas();
+
+	List<Materia> getCursadaActual(Usuario usuario);
 }

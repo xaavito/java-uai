@@ -15,6 +15,9 @@
 </h:head>
 
 <p:layout fullPage="true">
+	<p:ajaxStatus onstart="statusDialog.show();"
+		onsuccess="statusDialog.hide();" />
+
 	<p:dialog widgetVar="eventDialog" header="Fecha" showEffect="clip"
 		hideEffect="clip">
 		<h:panelGrid id="eventDetails" columns="2">
@@ -27,18 +30,23 @@
 		</h:panelGrid>
 	</p:dialog>
 
+	<p:dialog modal="true" widgetVar="statusDialog" draggable="false" header="Cargando..."
+		closable="false">
+		<p:graphicImage value="../resources/ajaxloadingbar.gif" />
+	</p:dialog>
+
 	<p:layoutUnit position="north" size="100" resizable="true"
 		closable="true" collapsible="true">
 		<h:outputText value="Bienvenido #{usuarioBean.name}"
 			style="float:right" />
 		<p:clock style="float:right" />
 	</p:layoutUnit>
-
+	<!-- 
 	<p:layoutUnit position="south" size="100" resizable="true"
 		closable="true" collapsible="true">
 		<h:outputText value="Aca no se que meter" />
 	</p:layoutUnit>
-
+ 	-->
 	<p:layoutUnit position="west" size="150" header="Principal"
 		resizable="true" closable="false" collapsible="false"
 		style="font-size:small">

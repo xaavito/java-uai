@@ -49,31 +49,41 @@ public class MateriaBean implements Serializable {
 
 	public String getInitializeMaterias() {
 		System.out
-				.println("INICILIZANDO Examenes!!!!!-----------------------------------");
-		setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
-		setAllMaterias(getMateriaService().getAllMaterias(usuarioBean.getUsr()));
-		setTiposCursada(getMateriaService().getTiposCursadas());
-		List<Materia> materias = getAllMaterias();
-		if (materias.size() > 0) {
-			materiasCursables = new ArrayList<Materia>();
-			for (Materia materia : materias) {
-				for (Cursada cur : materia.getCursadas()) {
-					for (Examen ex : cur.getExamenes()) {
-						if (ex.getNota() >= 4
-								&& ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL
-										.getValue()) {
-							materiasCursables.addAll(materia.getMateriasCoRelativas());
-						}
-					}
-				}
-				if (materia.getMateriasPreRelativas().isEmpty()) {
-					materiasCursables.add(materia);
-				}
-			}
+				.println("INICILIZANDO Materias!!!!!-----------------------------------");
+		if (null == getMaterias()) {
+			setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
+		}
+		if (null == getAllMaterias()) {
+			setAllMaterias(getMateriaService().getAllMaterias(
+					usuarioBean.getUsr()));
 		}
 		return null;
 	}
 
+	public String getInitializeCursada() {
+		System.out
+				.println("INICILIZANDO Cursada!!!!!-----------------------------------");
+
+		if (null == getTiposCursada()) {
+			setTiposCursada(getMateriaService().getTiposCursadas());
+		}
+		if (null == getCursadaActual()) {
+			setCursadaActual(getMateriaService().getCursadaActual(
+					usuarioBean.getUsr()));
+		}
+		if (null == materiasCursables) {
+			initializeMateriasCursables();
+		}
+		return null;
+	}
+	public String getInitializeMisMaterias() {
+		System.out
+				.println("INICILIZANDO Mis Materias!!!!!-----------------------------------");
+		if (null == materiasCursables) {
+			initializeMateriasCursables();
+		}
+		return null;
+	}
 	public IMateriaService getMateriaService() {
 		return materiaService;
 	}
@@ -121,10 +131,11 @@ public class MateriaBean implements Serializable {
 	}
 
 	public String saveCursada() {
-		getMateriaService().setCursada(cursadaActual, usuarioBean.getUsr(),tipoCursada);
+		getMateriaService().setCursada(cursadaActual, usuarioBean.getUsr(),
+				tipoCursada);
 		return null;
 	}
-	
+
 	public Materia getMateria() {
 		return materia;
 	}
@@ -147,5 +158,27 @@ public class MateriaBean implements Serializable {
 
 	public void setTipoCursada(Tipo_Cursada tipoCursada) {
 		this.tipoCursada = tipoCursada;
+	}
+
+	public void initializeMateriasCursables() {
+		List<Materia> materias = getAllMaterias();
+		if (materias.size() > 0) {
+			materiasCursables = new ArrayList<Materia>();
+			for (Materia materia : materias) {
+				for (Cursada cur : materia.getCursadas()) {
+					for (Examen ex : cur.getExamenes()) {
+						if (ex.getNota() >= 4
+								&& ex.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL
+										.getValue()) {
+							materiasCursables.addAll(materia
+									.getMateriasCoRelativas());
+						}
+					}
+				}
+				if (materia.getMateriasPreRelativas().isEmpty()) {
+					materiasCursables.add(materia);
+				}
+			}
+		}
 	}
 }

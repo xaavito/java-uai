@@ -46,4 +46,8 @@ public class MateriaService implements IMateriaService{
 	public List<Tipo_Cursada> getTiposCursadas() {
 		return materiaDAO.getTiposCursadas();
 	}
+
+	public List<Materia> getCursadaActual(Usuario usr) {
+		return materiaDAO.getCursadaActual(usr);
+	}
 }
