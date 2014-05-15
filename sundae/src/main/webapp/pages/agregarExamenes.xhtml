@@ -7,12 +7,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:form>
-		<h3></h3>  
-	    <p:panel header="ERROR">  
-	        <h:outputText value="A SER IMPLEMENTADO" />  
-	    </p:panel>  
-		<b></b>
-    </h:form>
+<h:form>
+	<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+		columnClasses="label, column">
+
+		<h:outputText value="Materias " />
+		<p:selectOneListbox value="#{examenBean.materia}" id="listaCursadas" converter="examenCursadaConverter">
+			<f:selectItems value="#{materiaBean.cursadaActual}" var="materia"
+				itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
+		</p:selectOneListBox>		
+	</h:panelGrid>
+
+	<p:separator />
+
+	<p:commandButton value="Confirmar" action="#{materiaBean.actualizar}" update="cursadaForm"/>
+		<p:separator />
+</h:form>
 
 </html>

@@ -42,15 +42,8 @@
 		<p:separator />
 		
 		<h:outputText value="Tipo Cursada: " />
-		<!--
-		
-		<p:selectOneButton value="#{materiaBean.tipoCursada}">  
-            <f:selectItems value="#{materiaBean.tiposCursada}" var="cursadaSeleccionada"
-				itemLabel="#{cursadaSeleccionada.descripcion}" itemValue="#{cursadaSeleccionada}"/>
-        </p:selectOneButton>
-         -->
          
-		<p:selectOneMenu value="#{materiaBean.tipoCursada}" id="tipoCursadaCombo" effect="fade" converter="cursadaConverter">
+		<p:selectOneMenu value="#{materiaBean.tipoCursada}" id="tipoCursadaCombo" effect="fade" converter="tipoCursadaConverter">
 			<f:selectItems value="#{materiaBean.tiposCursada}" var="tipoCursada"
 				itemLabel="#{tipoCursada.descripcion}" itemValue="#{tipoCursada}"/>
 		</p:selectOneMenu>

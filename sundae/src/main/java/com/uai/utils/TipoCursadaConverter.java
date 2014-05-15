@@ -8,8 +8,8 @@ import javax.faces.convert.FacesConverter;
 import com.uai.model.Cursada;
 import com.uai.model.Tipo_Cursada;
 
-@FacesConverter(value = "cursadaConverter", forClass = Cursada.class)
-public class CursadaConverter implements Converter{
+@FacesConverter(value = "tipoCursadaConverter", forClass = Tipo_Cursada.class)
+public class TipoCursadaConverter implements Converter{
 	
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		return SelectItemsUtils.findValueByStringConversion(context, component,
