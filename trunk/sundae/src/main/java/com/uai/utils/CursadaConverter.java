@@ -6,8 +6,6 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import com.uai.model.Cursada;
-import com.uai.model.Materia;
-import com.uai.model.Tipo_Cursada;
 
 @FacesConverter(value = "cursadaConverter", forClass = Cursada.class)
 public class CursadaConverter implements Converter{

@@ -12,7 +12,7 @@
 		columnClasses="label, column">
 
 		<h:outputText value="Materias " />
-		<p:selectOneListbox value="#{examenBean.materia}" id="listaCursadas" converter="examenCursadaConverter">
+		<p:selectOneListbox value="#{examenBean.materia}" id="listaCursadas" converter="cursadaConverter">
 			<f:selectItems value="#{materiaBean.cursadaActual}" var="materia"
 				itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
 		</p:selectOneListBox>		

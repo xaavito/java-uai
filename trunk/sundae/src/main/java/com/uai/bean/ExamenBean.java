@@ -27,11 +27,11 @@ public class ExamenBean {
     private List<Examen> examenes;
     
     public ExamenBean() { 
-    	System.out.println("cococo");
+    	System.out.println("EXAMEN BEAN!");
     }  
     
     public String getInitializeMisExamenes() {
-    	System.out.println("INICILIZANDO Examenes!!!!!-----------------------------------");
+    	System.out.println("INICILIZANDO Mis Examenes!!!!!-----------------------------------");
     	setExamenes(getExamenService().getExamenes(usuarioBean.getUsr()));
     	return null;
     }
