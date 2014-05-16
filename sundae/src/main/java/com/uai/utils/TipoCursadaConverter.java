@@ -5,7 +5,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import com.uai.model.Cursada;
 import com.uai.model.Tipo_Cursada;
 
 @FacesConverter(value = "tipoCursadaConverter", forClass = Tipo_Cursada.class)
