@@ -15,6 +15,6 @@ public interface IExamenDAO {
 
 	List<Tipo_Examen> getTiposExamen();
 
-	void saveExamen(Cursada cursada);
+	void saveExamen(Examen ex);
 
 }

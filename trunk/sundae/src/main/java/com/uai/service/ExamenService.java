@@ -29,13 +29,11 @@ public class ExamenService implements IExamenService{
 	}
 
 	public void saveExamen(Cursada cursada, Usuario usr, Date fecha, Tipo_Examen tipoExamen) {
-		List<Examen> listaExamenes = new ArrayList<Examen>();
 		Examen ex = new Examen();
 		ex.setFecha(fecha);
 		ex.setTipoExamen(tipoExamen);
-		listaExamenes.add(ex);
-		cursada.setExamenes(listaExamenes);
-		examenDAO.saveExamen(cursada);
+		ex.setCursada(cursada);
+		examenDAO.saveExamen(ex);
 	}
 
 	public List<Tipo_Examen> getTiposExamen() {

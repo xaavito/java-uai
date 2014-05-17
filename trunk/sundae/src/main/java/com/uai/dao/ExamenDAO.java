@@ -90,8 +90,8 @@ public class ExamenDAO implements IExamenDAO {
 	}
 
 	@Transactional
-	public void saveExamen(Cursada cursada) {
-		getSessionFactory().getCurrentSession().save(cursada);
+	public void saveExamen(Examen ex) {
+		//cursada.getExamenes()
+		getSessionFactory().getCurrentSession().save(ex);
 	}
-
 }
