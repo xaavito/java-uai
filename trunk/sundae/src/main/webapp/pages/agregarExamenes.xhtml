@@ -7,21 +7,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:form>
-	<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
-		columnClasses="label, column">
-
-		<h:outputText value="Materias " />
-		<p:selectOneListbox value="#{examenBean.materia}" id="listaCursadas" converter="cursadaConverter">
-			<f:selectItems value="#{materiaBean.cursadaActual}" var="materia"
-				itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
-		</p:selectOneListBox>		
-	</h:panelGrid>
-
-	<p:separator />
-
-	<p:commandButton value="Confirmar" action="#{materiaBean.actualizar}" update="cursadaForm"/>
-		<p:separator />
-</h:form>
+	<h:form>
+		<!--  <p:messages />-->
+		#{examenBean.initializeMisExamenes}
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+			columnClasses="label, column">				
+			<h:outputText value="Materias" />
+			<p:selectOneListbox id="listaCursadas" value="#{examenBean.cursada}"
+				style="width:400px" converter="cursadaConverter">
+				<f:selectItems value="#{examenBean.cursadaActual}" var="cursada"
+					itemLabel="#{cursada.materia.nombre}" itemValue="#{cursada}" />
+			</p:selectOneListbox>
+	
+			<h:outputText value="Fecha" />
+			<p:calendar id="date" value="#{examenBean.fecha}" pattern="dd-MM-yyyy"
+				mask="true" />
+			
+			<h:outputText value="Tipo Examen" />
+			<p:selectOneListbox id="tiposExamen" value="#{examenBean.tipoExamen}"
+				style="width:400px" converter="tipoExamenConverter">
+				<f:selectItems value="#{examenBean.tiposExamen}" var="tipoExamen"
+					itemLabel="#{tipoExamen.descripcion}" itemValue="#{tipoExamen}" />
+			</p:selectOneListbox>
+			
+			<p:commandButton value="Guardar" action="#{examenBean.saveExamen}" update="@form"/>
+		</h:panelGrid>
+	</h:form>
 
 </html>

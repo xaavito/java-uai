@@ -13,7 +13,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 
+import com.uai.model.Cursada;
 import com.uai.model.Tipo_Cursada;
+import com.uai.model.Tipo_Examen;
  
 public final class SelectItemsUtils {
  
@@ -31,6 +33,16 @@ public final class SelectItemsUtils {
             if (item instanceof Tipo_Cursada) {
             	if (((Tipo_Cursada)item).getIdTipoCursada() == Integer.parseInt(value)) {
             		return (Tipo_Cursada)item;
+            	}
+            }
+            if (item instanceof Cursada) {
+            	if (((Cursada)item).getIdCursada() == Integer.parseInt(value)) {
+            		return (Cursada)item;
+            	}
+            }
+            if (item instanceof Tipo_Examen) {
+            	if (((Tipo_Examen)item).getIdTipoExamen() == Integer.parseInt(value)) {
+            		return (Tipo_Examen)item;
             	}
             } 
         }        
