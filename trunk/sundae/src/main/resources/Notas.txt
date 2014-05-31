@@ -1,2 +1,4 @@
 	JSF: Los bean se levantan con autowiring, @blah y lo levanta, no se requiere configuracion extra.
 		Restiro lo dicho.. parece que algo levanta del application context... no entiendo nada...
+		
+		es log4j del hibernate se apaga desde el applicationContext

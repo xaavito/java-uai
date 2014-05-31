@@ -11,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import com.uai.estatico.Tipo_Examen_Enum;
 
 @Entity
 public class Cursada {
@@ -25,6 +28,15 @@ public class Cursada {
 	private Date fechaFinCursada;
 	private Tipo_Cursada tipo_cursada;
 	private List<Examen> examenes;
+	@SuppressWarnings("unused")
+	private double primerExamen;
+	@SuppressWarnings("unused")
+	private double segundoExamen;
+	@SuppressWarnings("unused")
+	private double recuperatorioExamen;
+	@SuppressWarnings("unused")
+	private double finalExamen;
+	
 	
 	public Cursada(){}
 
@@ -95,5 +107,62 @@ public class Cursada {
 
 	public void setExamenes(List<Examen> examenes) {
 		this.examenes = examenes;
+	}
+	@Transient
+	public double getPrimerExamen() {
+		for (Examen examen : this.examenes) {
+			if (examen.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.PARCIAL1.getValue()){
+				return examen.getNota();
+			}
+		}
+		System.out.println("ESTO NO DEBERIA PASAR.. NOTA EN 0...");
+		return 0;
+	}
+
+	public void setPrimerExamen(double primerExamen) {
+		this.primerExamen = primerExamen;
+	}
+	
+	@Transient
+	public double getSegundoExamen() {
+		for (Examen examen : this.examenes) {
+			if (examen.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.PARCIAL2.getValue()){
+				return examen.getNota();
+			}
+		}
+		System.out.println("ESTO NO DEBERIA PASAR.. NOTA EN 0...");
+		return 0;
+	}
+
+	public void setSegundoExamen(double segundoExamen) {
+		this.segundoExamen = segundoExamen;
+	}
+	@Transient
+	public double getRecuperatorioExamen() {
+		for (Examen examen : this.examenes) {
+			if (examen.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.RECUPERATORIO.getValue()){
+				return examen.getNota();
+			}
+		}
+		System.out.println("ESTO NO DEBERIA PASAR.. NOTA EN 0...");
+		return 0;
+	}
+
+	public void setRecuperatorioExamen(double recuperatorioExamen) {
+		this.recuperatorioExamen = recuperatorioExamen;
+	}
+	@Transient
+	public double getFinalExamen() {
+		for (Examen examen : this.examenes) {
+			if (examen.getTipoExamen().getIdTipoExamen() == Tipo_Examen_Enum.FINAL.getValue()){
+				return examen.getNota();
+			}
+		}
+		System.out.println("ESTO NO DEBERIA PASAR.. NOTA EN 0...");
+		return 0;
+	}
+
+	public void setFinalExamen(double finalExamen) {
+		this.finalExamen = finalExamen;
 	}
 }

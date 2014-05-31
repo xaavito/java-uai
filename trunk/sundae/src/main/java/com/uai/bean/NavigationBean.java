@@ -13,13 +13,14 @@ public class NavigationBean extends BaseBean {
 	 * 
 	 */
 	private static final long serialVersionUID = 8844844725194400356L;
-	private String pageName = "test";
+	//DEFAULT
+	private String pageName = "misMaterias";
 
 	public NavigationBean() {
 	}
-	static Logger log = Logger.getLogger(
-            NavigationBean.class.getName());
-	
+
+	static Logger log = Logger.getLogger(NavigationBean.class.getName());
+
 	public void setPageName(String pageName) {
 		this.pageName = pageName;
 	}
@@ -28,50 +29,56 @@ public class NavigationBean extends BaseBean {
 		return pageName;
 	}
 
-	public void miCarrera() {
-		this.pageName = "miCarrera";
-		log.info("llamando a Mi Carrera");
-		log.error("probando error");
-	}
-
+	//CARRERA
 	public void nuevaCarrera() {
+		log.info("llamando NUEVA CARRERA");
 		this.pageName = "nuevaCarrera";
 	}
-
-	public void buscar() {
-		this.pageName = "searchUser";
-	}
-
+	
+	//MATERIAS
+	
 	public void materias() {
+		log.info("llamando a MATERIAS");
 		this.pageName = "materias";
 	}
 
 	public void misMaterias() {
+		log.info("llamando a MIS MATERIAS");
 		this.pageName = "misMaterias";
 	}
-
-	public void examenes() {
-		this.pageName = "examenes";
+	
+	public void notas() {
+		log.info("llamando a NOTAS");
+		this.pageName = "notas";
 	}
-
-	public void cursada() {
-		this.pageName = "cursada";
-	}
-
-	public void misDatos() {
-		this.pageName = "misDatos";
-	}
-
+	
 	public void presentismo() {
+		log.info("llamando a PRESENTISMO");
 		this.pageName = "presentismo";
 	}
 
-	public void notas() {
-		this.pageName = "notas";
-	}
-
+	//EXAMENES
+	
 	public void agregarExamenes() {
+		log.info("llamando a AGREGAR EXAMENES");
 		this.pageName = "agregarExamenes";
 	}
+	
+	//CURSADA
+	public void cursada() {
+		log.info("llamando A CURSADA");
+		this.pageName = "cursada";
+	}
+	
+	//MIS DATOS
+	
+	public void misDatos() {
+		log.info("llamando a MIS DATOS");
+		this.pageName = "misDatos";
+	}
 
+	public void salir() {
+		log.info("llamando a SALIR");
+		this.pageName = "logout";
+	}
 }

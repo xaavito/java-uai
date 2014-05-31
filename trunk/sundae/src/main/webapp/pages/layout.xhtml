@@ -19,7 +19,7 @@
 		onsuccess="statusDialog.hide();" />
 
 	<p:dialog widgetVar="eventDialog" header="Fecha" showEffect="clip"
-		hideEffect="clip">
+		hideEffect="clip" resizable="false">
 		<h:panelGrid id="eventDetails" columns="2">
 			<h:outputLabel for="title" value="Title:" />
 			<p:outputLabel id="title" value="#{calendarioBean.event.title}" />
@@ -31,7 +31,7 @@
 	</p:dialog>
 
 	<p:dialog modal="true" widgetVar="statusDialog" draggable="false" header="Cargando..."
-		closable="false">
+		closable="false" resizable="false">
 		<p:graphicImage value="../resources/ajaxloadingbar.gif" />
 	</p:dialog>
 
@@ -50,9 +50,6 @@
 					<p:menuitem value="Nueva Carrera"
 						actionListener="#{navigationBean.nuevaCarrera}" 
 						update=":principal" icon="ui-icon-plus" />
-					<p:menuitem value="Mi Historia"
-						actionListener="#{navigationBean.miCarrera}" 
-						update=":principal" icon="ui-icon-disk" />
 				</p:submenu>
 				<p:submenu label="Materias">
 					<p:menuitem value="Todas" update=":principal"
@@ -65,22 +62,18 @@
 						action="#{navigationBean.presentismo}" icon="ui-icon-clock" />
 				</p:submenu>
 				<p:submenu label="Examenes">
-					<p:menuitem value="Historico" update=":principal"
-						action="#{navigationBean.examenes}" icon="ui-icon-disk" />
 					<p:menuitem value="Agregar" update=":principal"
 						action="#{navigationBean.agregarExamenes}" icon="ui-icon-plus" />
 				</p:submenu>
 				<p:submenu label="Cursada">
 					<p:menuitem value="Anotada" update=":principal"
 						action="#{navigationBean.cursada}" icon="ui-icon-plus" />
-					<p:menuitem value="Historico" update=":principal"
-						action="#{navigationBean.misCursadas}" icon="ui-icon-disk" />
 				</p:submenu>
 				<p:submenu label="Mis Datos">
 					<p:menuitem value="Mis Datos" update=":principal"
 						action="#{navigationBean.misDatos}" icon="ui-icon-home" />
-					<p:menuitem value="Salir" update=":principal"
-						action="#{navigationBean.salir}" icon="ui-icon-power" />
+					<p:menuitem value="Salir" 
+						action="#{navigationBean.salir}" url="http://localhost:8080/sundae/pages/logout.xhtml" icon="ui-icon-power" />
 				</p:submenu>
 			</p:panelMenu>
 		</h:form>
