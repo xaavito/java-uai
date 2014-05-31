@@ -76,6 +76,16 @@ public class ExamenBean {
 		return null;
 	}
 
+	public String getRefrescarCursada() {
+		System.out
+				.println("REFRESCANDO Cursada!!!!!-----------------------------------");
+
+		setCursadaActual(getExamenService().getCursadaActual(
+				usuarioBean.getUsr()));
+
+		return null;
+	}
+
 	public IExamenService getExamenService() {
 		return examenService;
 	}

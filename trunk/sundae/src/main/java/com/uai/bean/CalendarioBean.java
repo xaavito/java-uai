@@ -1,7 +1,6 @@
 package com.uai.bean;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -56,14 +55,6 @@ public class CalendarioBean extends BaseBean implements Serializable {
 				}
             }     
         };  
-    }  
-      
-    public Date getRandomDate(Date base) {  
-        Calendar date = Calendar.getInstance();  
-        date.setTime(base);  
-        date.add(Calendar.DATE, ((int) (Math.random()*30)) + 1);    //set random day of month  
-          
-        return date.getTime();  
     }  
       
     public ScheduleModel getLazyEventModel() {  
