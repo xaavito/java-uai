@@ -30,6 +30,7 @@
 					itemLabel="#{tipoExamen.descripcion}" itemValue="#{tipoExamen}" />
 			</p:selectOneListbox>
 			
+			<p:commandButton value="Refrescar" action="#{examenBean.refrescarCursada}" update="@form"/>
 			<p:commandButton value="Guardar" action="#{examenBean.saveExamen}" update="@form"/>
 		</h:panelGrid>
 	</h:form>

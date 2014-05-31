@@ -124,4 +124,10 @@ public class CarreraBean {
 	public void setCursada(Cursada cursada) {
 		this.cursada = cursada;
 	}
+	
+	public String getRefrescarNotas() {
+    	System.out.println("refrescando MATERIAS!!!!!-----------------------------------");
+    	setMisCarreras(getCarreraService().getMisCarreras(usuarioBean.getUsr()));
+    	return null;
+    }
 }
