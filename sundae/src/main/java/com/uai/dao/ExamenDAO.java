@@ -94,4 +94,9 @@ public class ExamenDAO implements IExamenDAO {
 		//cursada.getExamenes()
 		getSessionFactory().getCurrentSession().save(ex);
 	}
+
+	@Transactional
+	public void updateExamen(Examen examen) {
+		getSessionFactory().getCurrentSession().update(examen);
+	}
 }

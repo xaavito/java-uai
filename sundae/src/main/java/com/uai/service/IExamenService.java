@@ -19,4 +19,6 @@ public interface IExamenService {
 
 	public List<Tipo_Examen> getTiposExamen();
 
+	public void saveNota(Examen examen, Usuario usr, int nota);
+
 }

@@ -17,4 +17,6 @@ public interface IExamenDAO {
 
 	void saveExamen(Examen ex);
 
+	void updateExamen(Examen examen);
+
 }

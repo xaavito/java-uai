@@ -39,4 +39,8 @@ public class ExamenService implements IExamenService{
 		return examenDAO.getTiposExamen();
 	}
 
+	public void saveNota(Examen examen, Usuario usr, int nota) {
+		examen.setNota(nota);
+		examenDAO.updateExamen(examen);
+	}
 }

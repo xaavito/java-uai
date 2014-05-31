@@ -14,6 +14,7 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 
 import com.uai.model.Cursada;
+import com.uai.model.Examen;
 import com.uai.model.Tipo_Cursada;
 import com.uai.model.Tipo_Examen;
  
@@ -43,6 +44,12 @@ public final class SelectItemsUtils {
             if (item instanceof Tipo_Examen) {
             	if (((Tipo_Examen)item).getIdTipoExamen() == Integer.parseInt(value)) {
             		return (Tipo_Examen)item;
+            	}
+            }
+            
+            if (item instanceof Examen) {
+            	if (((Examen)item).getIdExamen() == Integer.parseInt(value)) {
+            		return (Examen)item;
             	}
             } 
         }        

@@ -44,12 +44,12 @@ public class MateriaBean implements Serializable {
 	private List<Tipo_Cursada> tiposCursada;
 
 	public MateriaBean() {
-		System.out.println("cococo");
+		System.out.println("INIT DE MATERIA BEAN");
 	}
 
 	public String getInitializeMaterias() {
 		System.out
-				.println("INICILIZANDO Materias!!!!!-----------------------------------");
+				.println("INICIALIZANDO Materia BEAN!!!!!-----------------------------------");
 		if (null == getMaterias()) {
 			setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
 		}
@@ -61,6 +61,7 @@ public class MateriaBean implements Serializable {
 	}
 
 	public String getInitializeCursada() {
+		getInitializeMisMaterias();
 		System.out
 				.println("INICILIZANDO Cursada!!!!!-----------------------------------");
 
@@ -71,11 +72,7 @@ public class MateriaBean implements Serializable {
 			setCursadaActual(getMateriaService().getCursadaActual(
 					usuarioBean.getUsr()));
 		}
-		/*
-		if (null == materiasCursables) {
-			initializeMateriasCursables();
-		}
-		*/
+
 		return null;
 	}
 	public String getInitializeMisMaterias() {
@@ -128,7 +125,7 @@ public class MateriaBean implements Serializable {
 	}
 
 	public String actualizar() {
-		System.out.println("veremos");
+		System.out.println("Guardando cursada actual....");
 		return null;
 	}
 

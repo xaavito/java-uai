@@ -35,11 +35,11 @@ public class CarreraBean {
     private List<Carrera> allCarreras;
     
     public CarreraBean() { 
-    	System.out.println("cococo");
+    	System.out.println("INIT DE CARRERA BEAN");
     }  
     
     public String getInitialize() {
-    	System.out.println("INICILIZANDO Carreras!!!!!-----------------------------------");
+    	System.out.println("INICILIZANDO Carreras Bean!!!!!-----------------------------------");
     	if (null == getMisCarreras()) {
     		setMisCarreras(getCarreraService().getMisCarreras(usuarioBean.getUsr()));
     	}

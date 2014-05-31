@@ -8,11 +8,24 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form>
-		<h3></h3>  
-	    <p:panel header="ERROR">  
-	        <h:outputText value="A SER IMPLEMENTADO" />  
-	    </p:panel>  
-		<b></b>
-    </h:form>
+		<p:messages />
+		#{examenBean.initializeExamenes}
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+			columnClasses="label, column">				
+			<h:outputText value="Examenes" />
+			<p:selectOneListbox id="listaExamenes" value="#{examenBean.examen}"
+				style="width:400px" converter="examenConverter">
+				<f:selectItems value="#{examenBean.examenes}" var="ex"
+					itemLabel="#{ex.cursada.materia.nombre} - #{ex.tipoExamen.descripcion}" itemValue="#{ex}" />
+			</p:selectOneListbox>
+			
+			<p:commandButton value="Refrescar" action="#{examenBean.resfrescarExamenes}" update="@form"/>
+			
+			<h:outputText value="Nota" />
+			<p:inputText value="#{examenBean.nota}"/>	
+			
+			<p:commandButton value="Guardar" action="#{examenBean.saveNota}" update="@form"/>
+		</h:panelGrid>
+	</h:form>
 
 </html>
