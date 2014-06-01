@@ -1,5 +1,6 @@
 package com.uai.bean;
 
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.apache.log4j.Logger;
@@ -79,6 +80,7 @@ public class NavigationBean extends BaseBean {
 
 	public void salir() {
 		log.info("llamando a SALIR");
-		this.pageName = "logout";
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		this.pageName = "index?faces-redirect=true";
 	}
 }

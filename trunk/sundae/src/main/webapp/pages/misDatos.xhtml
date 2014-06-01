@@ -8,11 +8,21 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form>
-		<h3></h3>  
-	    <p:panel header="ERROR">  
-	        <h:outputText value="A SER IMPLEMENTADO" />  
-	    </p:panel>  
-		<b></b>
-    </h:form>
-
+		<p:messages />
+		#{baseBean.usr.idUsuario}
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+			columnClasses="label, column">				
+			<h:outputText value="Id Usuario" />
+			<p:inputText value="#{baseBean.usr.idUsuariog}" />
+			
+			<h:outputText value="Usuario" />
+			<p:inputText value="#{baseBean.usr.usuario}" />
+			
+			<h:outputText value="Password" />
+			<p:inputText value="#{baseBean.usr.password}" />
+			
+			<h:outputText value="Tipo Ususario" />
+			<p:inputText value="#{baseBean.usr.tipoUsuario.descripcion}" />
+		</h:panelGrid>
+	</h:form>
 </html>

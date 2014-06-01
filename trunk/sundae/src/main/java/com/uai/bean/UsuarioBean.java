@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
@@ -20,6 +21,8 @@ public class UsuarioBean extends BaseBean implements Serializable {
     private static final String SUCCESS = "success";
     private static final String ERROR   = "error";
  
+    static Logger log = Logger.getLogger(UsuarioBean.class.getName());
+    
     //Spring User Service is injected...
     @Inject
     @Named("usuarioService")
@@ -28,7 +31,7 @@ public class UsuarioBean extends BaseBean implements Serializable {
     private int id;
     private String name;
     private String pass;
- 
+    
     public UsuarioBean(){
     	//System.out.println(getUserService());
     }
@@ -41,6 +44,7 @@ public class UsuarioBean extends BaseBean implements Serializable {
         try {
             setUsr(getUserService().login(getName(), getPass()));
             if (getUsr() != null) {
+            	log.info(getUsr().getUsuario() + " conectado existosamente");
             	return SUCCESS;
             }
             else {
@@ -105,4 +109,19 @@ public class UsuarioBean extends BaseBean implements Serializable {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
+	public String initializeMisDatos() {
+    	//System.out.println("INICILIZANDO Mis Datos - Usuario Bean!!!!!-----------------------------------");
+    	log.info("INICILIZANDO Mis Datos - Usuario Bean!!!!!-----------------------------------");
+    	
+    	/*
+    	if (null == getMisCarreras()) {
+    		setMisCarreras(getCarreraService().getMisCarreras(usuarioBean.getUsr()));
+    	}
+    	if (null == getAllCarreras()) {
+    		setAllCarreras(getCarreraService().getAllCarreras());
+    	}
+    	*/
+    	return null;
+    }
 }
