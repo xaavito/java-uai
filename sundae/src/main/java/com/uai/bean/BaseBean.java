@@ -16,6 +16,9 @@ public class BaseBean implements Serializable{
 	/**
 	 * 
 	 */
+	
+	
+	
 	private static final long serialVersionUID = -6040881424053253915L;
 	private Usuario usr;
 	

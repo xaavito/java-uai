@@ -16,7 +16,7 @@ public class NavigationBean extends BaseBean {
 	private static final long serialVersionUID = 8844844725194400356L;
 	//DEFAULT
 	private String pageName = "misMaterias";
-
+	
 	public NavigationBean() {
 	}
 
@@ -78,9 +78,9 @@ public class NavigationBean extends BaseBean {
 		this.pageName = "misDatos";
 	}
 
-	public void salir() {
+	public String salir() {
 		log.info("llamando a SALIR");
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		this.pageName = "index?faces-redirect=true";
+		return "index.xhtml?faces-redirect=true";
 	}
 }

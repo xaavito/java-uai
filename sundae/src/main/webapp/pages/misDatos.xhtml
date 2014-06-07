@@ -9,20 +9,19 @@
 
 	<h:form>
 		<p:messages />
-		#{baseBean.usr.idUsuario}
 		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
 			columnClasses="label, column">				
 			<h:outputText value="Id Usuario" />
-			<p:inputText value="#{baseBean.usr.idUsuariog}" />
+			<h:outputText value="#{usuarioBean.idUsuario}" id="id"/>
 			
 			<h:outputText value="Usuario" />
-			<p:inputText value="#{baseBean.usr.usuario}" />
+			<h:outputText value="#{usuarioBean.nombre}" id="usr"/>
 			
 			<h:outputText value="Password" />
-			<p:inputText value="#{baseBean.usr.password}" />
+			<h:outputText value="#{usuarioBean.password}" id="pass"/>
 			
 			<h:outputText value="Tipo Ususario" />
-			<p:inputText value="#{baseBean.usr.tipoUsuario.descripcion}" />
+			<h:outputText value="#{usuarioBean.tipo}" id="tipo"/>
 		</h:panelGrid>
 	</h:form>
 </html>
