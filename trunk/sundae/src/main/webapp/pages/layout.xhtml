@@ -30,8 +30,8 @@
 		</h:panelGrid>
 	</p:dialog>
 
-	<p:dialog modal="true" widgetVar="statusDialog" draggable="false" header="Cargando..."
-		closable="false" resizable="false">
+	<p:dialog modal="true" widgetVar="statusDialog" draggable="false"
+		header="Cargando..." closable="false" resizable="false">
 		<p:graphicImage value="../resources/ajaxloadingbar.gif" />
 	</p:dialog>
 
@@ -48,7 +48,7 @@
 			<p:panelMenu style="width:150">
 				<p:submenu label="Carrera">
 					<p:menuitem value="Nueva Carrera"
-						actionListener="#{navigationBean.nuevaCarrera}" 
+						actionListener="#{navigationBean.nuevaCarrera}"
 						update=":principal" icon="ui-icon-plus" />
 				</p:submenu>
 				<p:submenu label="Materias">
@@ -72,10 +72,10 @@
 				<p:submenu label="Mis Datos">
 					<p:menuitem value="Mis Datos" update=":principal"
 						action="#{navigationBean.misDatos}" icon="ui-icon-home" />
-					<p:menuitem value="Salir" 
-						action="#{navigationBean.salir}" icon="ui-icon-power" />
+					<p:menuitem value="Salir" action="#{navigationBean.salir}"
+						icon="ui-icon-power" />
 				</p:submenu>
-			</p:panelMenu>
+		</p:panelMenu>
 		</h:form>
 	</p:layoutUnit>
 

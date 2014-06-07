@@ -32,6 +32,15 @@ public class UsuarioBean extends BaseBean implements Serializable {
     private String name;
     private String pass;
     
+    @SuppressWarnings("unused")
+	private int idUsuario;
+    @SuppressWarnings("unused")
+	private String nombre;
+    @SuppressWarnings("unused")
+	private String password;
+    @SuppressWarnings("unused")
+	private String tipo;
+    
     public UsuarioBean(){
     	//System.out.println(getUserService());
     }
@@ -124,4 +133,29 @@ public class UsuarioBean extends BaseBean implements Serializable {
     	*/
     	return null;
     }
+	
+	public int getIdUsuario() {
+		return getUsr().getIdUsuario();
+	}
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	public String getNombre() {
+		return getUsr().getUsuario();
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getPassword() {
+		return getUsr().getPassword();
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getTipo() {
+		return getUsr().getTipo_Usuario().getDescripcion();
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 }
