@@ -15,6 +15,7 @@ public class Fecha_Cursada {
 	private int idFechaCursada;
 	private Date fecha;
 	private Dia_Cursada dia_Cursada;
+	private int presente;
 	
 	public Fecha_Cursada(){}
 
@@ -46,5 +47,14 @@ public class Fecha_Cursada {
 
 	public void setDia_Cursada(Dia_Cursada dia_Cursada) {
 		this.dia_Cursada = dia_Cursada;
+	}
+	
+	@Column(name="presente", unique = true, nullable = false)
+	public int getPresente() {
+		return presente;
+	}
+
+	public void setPresente(int presente) {
+		this.presente = presente;
 	}
 }

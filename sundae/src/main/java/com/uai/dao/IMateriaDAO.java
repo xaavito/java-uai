@@ -3,6 +3,9 @@ package com.uai.dao;
 import java.util.List;
 
 import com.uai.model.Cursada;
+import com.uai.model.Dia;
+import com.uai.model.Dia_Cursada;
+import com.uai.model.Fecha_Cursada;
 import com.uai.model.Materia;
 import com.uai.model.Tipo_Cursada;
 import com.uai.model.Usuario;
@@ -20,4 +23,10 @@ public interface IMateriaDAO {
 	Tipo_Cursada find(String value);
 
 	List<Materia> getCursadaActual(Usuario usr);
+
+	List<Dia> getDias();
+
+	void setDiasCursada(List<Dia_Cursada> diasCursadas);
+
+	void setFechasCursada(List<Fecha_Cursada> fechasCursadas);
 }

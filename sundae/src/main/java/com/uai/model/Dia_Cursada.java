@@ -18,7 +18,6 @@ import org.hibernate.annotations.FetchMode;
 public class Dia_Cursada {
 	private int idDiaCursada;
 	private Dia dia;
-	private int horas;
 	private Cursada cursada;
 	private List<Fecha_Cursada> fechasCursadas;
 	
@@ -43,15 +42,6 @@ public class Dia_Cursada {
 
 	public void setDia(Dia dia) {
 		this.dia = dia;
-	}
-
-    @Column(name="horas", unique = true, nullable = false)
-	public int getHoras() {
-		return horas;
-	}
-
-	public void setHoras(int horas) {
-		this.horas = horas;
 	}
 
 	@ManyToOne

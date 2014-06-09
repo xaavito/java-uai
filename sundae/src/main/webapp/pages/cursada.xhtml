@@ -34,6 +34,13 @@
 			<p:column headerText="Estado">
 				#{coco.estado}
 			</p:column>
+			
+			<p:column headerText="Dia de Cursada">
+		        <p:selectOneMenu value="#{coco.dia}" converter="diaConverter">
+		            <f:selectItems value="#{materiaBean.dias}" var="dia" 
+		                itemLabel="#{dia.descripcion}" itemValue="#{dia}" />
+		        </p:selectOneMenu>
+		    </p:column>
 		</p:dataTable>
 	
 		<p:separator />
@@ -68,6 +75,10 @@
 	
 			<p:column headerText="Estado">
 				<h:outputText value="#{coco.estado}" />
+			</p:column>
+			
+			<p:column headerText="Dia">
+				<h:outputText value="#{coco.dia.descripcion}" />
 			</p:column>
 		</p:dataTable>
 	
