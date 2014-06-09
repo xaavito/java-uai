@@ -14,6 +14,7 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 
 import com.uai.model.Cursada;
+import com.uai.model.Dia;
 import com.uai.model.Examen;
 import com.uai.model.Tipo_Cursada;
 import com.uai.model.Tipo_Examen;
@@ -51,8 +52,15 @@ public final class SelectItemsUtils {
             	if (((Examen)item).getIdExamen() == Integer.parseInt(value)) {
             		return (Examen)item;
             	}
+            }
+            
+            if (item instanceof Dia) {
+            	if (((Dia)item).getIdDia() == Integer.parseInt(value)) {
+            		return (Dia)item;
+            	}
             } 
-        }        
+        }
+    	System.out.println("estoy a punto de salir sin conversor.. falta algo...");
         return null;
     }
  

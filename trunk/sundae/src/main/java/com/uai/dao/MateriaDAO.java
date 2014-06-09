@@ -11,6 +11,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uai.model.Cursada;
+import com.uai.model.Dia;
+import com.uai.model.Dia_Cursada;
+import com.uai.model.Fecha_Cursada;
 import com.uai.model.Materia;
 import com.uai.model.Tipo_Cursada;
 import com.uai.model.Usuario;
@@ -137,5 +140,36 @@ public class MateriaDAO implements IMateriaDAO{
 		}
 
 		return materiasCursada;
+	}
+
+	@Transactional
+	public List<Dia> getDias() {
+		List<Dia> dias = new ArrayList<Dia>();
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"from Dia");
+
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			dias.add((Dia) obj);
+		}
+
+		return dias;
+	}
+
+	@Transactional
+	public void setDiasCursada(List<Dia_Cursada> diasCursadas) {
+		for (Dia_Cursada diaCursada : diasCursadas) {
+			getSessionFactory().getCurrentSession().save(diaCursada);
+		}	
+	}
+
+	@Transactional
+	public void setFechasCursada(List<Fecha_Cursada> fechasCursadas) {
+		for (Fecha_Cursada fechaCursada : fechasCursadas) {
+			getSessionFactory().getCurrentSession().save(fechaCursada);
+		}
 	}
 }

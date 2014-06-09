@@ -31,6 +31,8 @@ public class Materia {
 	private List<Materia> materiasPreRelativas;
 	private String estado;
 	private List<Cursada> cursadas;
+	private Dia	dia;
+	private int horas;
 	
 	
 	public Materia(){}
@@ -134,8 +136,21 @@ public class Materia {
 		this.cursadas = cursadas;
 	}
 
-//	@Override
-//	public String toString() {
-//		return this.nombre;
-//	}
+	@Transient
+	public Dia getDia() {
+		return dia;
+	}
+
+	public void setDia(Dia dia) {
+		this.dia = dia;
+	}
+
+	@Column(name="horas", unique = true, nullable = false)
+	public int getHoras() {
+		return horas;
+	}
+
+	public void setHoras(int horas) {
+		this.horas = horas;
+	}
 }

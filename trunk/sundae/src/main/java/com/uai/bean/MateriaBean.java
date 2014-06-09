@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 
 import com.uai.estatico.Tipo_Examen_Enum;
 import com.uai.model.Cursada;
+import com.uai.model.Dia;
 import com.uai.model.Examen;
 import com.uai.model.Materia;
 import com.uai.model.Tipo_Cursada;
@@ -42,6 +43,7 @@ public class MateriaBean implements Serializable {
 	private Materia materia;
 	private Tipo_Cursada tipoCursada;
 	private List<Tipo_Cursada> tiposCursada;
+	private List<Dia> dias;
 
 	public MateriaBean() {
 		System.out.println("INIT DE MATERIA BEAN");
@@ -57,6 +59,10 @@ public class MateriaBean implements Serializable {
 			setAllMaterias(getMateriaService().getAllMaterias(
 					usuarioBean.getUsr()));
 		}
+		if (null == getDias()) {
+			setDias(getMateriaService().getDias());
+		}
+		
 		return null;
 	}
 
@@ -179,5 +185,13 @@ public class MateriaBean implements Serializable {
 				}
 			}
 		}
+	}
+
+	public List<Dia> getDias() {
+		return dias;
+	}
+
+	public void setDias(List<Dia> dias) {
+		this.dias = dias;
 	}
 }
