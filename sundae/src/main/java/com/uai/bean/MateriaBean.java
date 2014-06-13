@@ -14,6 +14,7 @@ import com.uai.estatico.Tipo_Examen_Enum;
 import com.uai.model.Cursada;
 import com.uai.model.Dia;
 import com.uai.model.Examen;
+import com.uai.model.Fecha_Cursada;
 import com.uai.model.Materia;
 import com.uai.model.Tipo_Cursada;
 import com.uai.service.IMateriaService;
@@ -44,6 +45,8 @@ public class MateriaBean implements Serializable {
 	private Tipo_Cursada tipoCursada;
 	private List<Tipo_Cursada> tiposCursada;
 	private List<Dia> dias;
+	private List<Fecha_Cursada> presentismos;
+	private List<Fecha_Cursada> presentismosSeleccionados;
 
 	public MateriaBean() {
 		System.out.println("INIT DE MATERIA BEAN");
@@ -81,6 +84,18 @@ public class MateriaBean implements Serializable {
 
 		return null;
 	}
+	
+	public String getInitializePresentismo() {
+		System.out
+				.println("INICILIZANDO Presentismo!!!!!-----------------------------------");
+
+		if (null == getPresentismos()) {
+			setPresentismos(getMateriaService().getPresentismos());
+		}
+		
+		return null;
+	}
+	
 	public String getInitializeMisMaterias() {
 		System.out
 				.println("INICILIZANDO Mis Materias!!!!!-----------------------------------");
@@ -193,5 +208,22 @@ public class MateriaBean implements Serializable {
 
 	public void setDias(List<Dia> dias) {
 		this.dias = dias;
+	}
+
+	public List<Fecha_Cursada> getPresentismos() {
+		return presentismos;
+	}
+
+	public void setPresentismos(List<Fecha_Cursada> presentismos) {
+		this.presentismos = presentismos;
+	}
+
+	public List<Fecha_Cursada> getPresentismosSeleccionados() {
+		return presentismosSeleccionados;
+	}
+
+	public void setPresentismosSeleccionados(
+			List<Fecha_Cursada> presentismosSeleccionados) {
+		this.presentismosSeleccionados = presentismosSeleccionados;
 	}
 }

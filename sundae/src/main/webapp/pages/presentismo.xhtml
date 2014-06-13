@@ -8,11 +8,33 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form>
-		<h3></h3>  
-	    <p:panel header="ERROR">  
-	        <h:outputText value="A SER IMPLEMENTADO" />  
-	    </p:panel>  
-		<b></b>
-    </h:form>
+		#{materiaBean.initializePresentismo}
+		<p:dataTable id="presentismo" var="coco"
+			value="#{materiaBean.presentismos}" paginator="true" rows="10"
+			rowKey="#{coco.idFechaCursada}" selection="#{materiaBean.presentismosSeleccionados}">
+	
+			<f:facet name="header">  
+	            Presentismo  
+	        </f:facet>
+	
+			<p:column selectionMode="multiple" style="width:2%" />
+	
+			<p:column headerText="Nombre">
+				#{coco.dia_Cursada.cursada.materia.nombre}
+			</p:column>
+			
+			<p:column headerText="Fecha">
+				#{coco.fecha}
+			</p:column>
+	
+			<p:column headerText="Presente">
+				#{coco.presente}
+			</p:column>
+		</p:dataTable>
+	
+		<p:separator />
+	
+		<p:commandButton value="Guardar" action="#{materiaBean.savePresentismo}"/>
+	</h:form>
 
 </html>
