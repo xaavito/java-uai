@@ -92,4 +92,8 @@ public class MateriaService implements IMateriaService{
 	public List<Dia> getDias() {
 		return materiaDAO.getDias();
 	}
+
+	public List<Fecha_Cursada> getPresentismos() {
+		return materiaDAO.getPresentismos();
+	}
 }

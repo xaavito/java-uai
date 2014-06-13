@@ -172,4 +172,21 @@ public class MateriaDAO implements IMateriaDAO{
 			getSessionFactory().getCurrentSession().save(fechaCursada);
 		}
 	}
+
+	@Transactional
+	public List<Fecha_Cursada> getPresentismos() {
+		List<Fecha_Cursada> dias = new ArrayList<Fecha_Cursada>();
+		Query query = getSessionFactory()
+				.getCurrentSession()
+				.createQuery(
+						"from Fecha_Cursada");
+
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		for (Object obj : list) {
+			dias.add((Fecha_Cursada) obj);
+		}
+
+		return dias;
+	}
 }
