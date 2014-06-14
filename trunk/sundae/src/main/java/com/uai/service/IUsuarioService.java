@@ -6,4 +6,6 @@ public interface IUsuarioService {
 	
 	public Usuario login(String usr, String pass);
 
+	public Usuario crearUsuario(String name, String pass);
+
 }

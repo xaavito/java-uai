@@ -158,4 +158,21 @@ public class UsuarioBean extends BaseBean implements Serializable {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public String crearUsuario() {
+        try {
+        	setUsr(getUserService().crearUsuario(getName(), getPass()));
+            if (getUsr() != null) {
+            	log.info(getUsr().getUsuario() + " conectado existosamente");
+            	return SUCCESS;
+            }
+            else {
+            	return ERROR;
+            }
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }   
+ 
+        return ERROR;
+    }
 }

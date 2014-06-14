@@ -25,10 +25,8 @@
 					<p:inputText value="#{usuarioBean.name}"></p:inputText>
 					<h:outputText value="Password"></h:outputText>
 					<p:password value="#{usuarioBean.pass}"></p:password>
-					<p:commandButton value="Login" action="#{usuarioBean.login}"
-						ajax="false" />
-					<p:commandButton value="Registrarse"
-						action="#{navigationBean.registrarse}" ajax="false" />
+					<p:commandButton value="Guardar"
+						action="#{usuarioBean.crearUsuario}" ajax="false" />
 				</h:panelGrid>
 			</p:panel>
 		</h:form>

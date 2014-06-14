@@ -19,4 +19,8 @@ public class UsuarioService implements IUsuarioService{
 	public Usuario login(String usr, String pass) {
 		return userDAO.login(usr, pass);
 	}
+
+	public Usuario crearUsuario(String name, String pass) {
+		return userDAO.crearUsuario(name, pass);
+	}
 }
