@@ -115,6 +115,7 @@ public class Materia {
 		}
 		for (Cursada cur : getCursadas()) {
 			Date hoy = new Date();
+			//esto esta mal... si no la estoy cursando y estoy entre fechas las trae igual
 			if (hoy.after(cur.getFechaInicioCursada()) && hoy.before(cur.getFechaFinCursada())) {
 				estado = Estado_Materia_Enum.CURSANDO.getValue();
 			}

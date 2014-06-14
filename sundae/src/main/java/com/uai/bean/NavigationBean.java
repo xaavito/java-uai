@@ -83,4 +83,9 @@ public class NavigationBean extends BaseBean {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index.xhtml?faces-redirect=true";
 	}
+	
+	public String registrarse() {
+		log.info("llamando a registrarse");
+		return "registro.xhtml";
+	}
 }
