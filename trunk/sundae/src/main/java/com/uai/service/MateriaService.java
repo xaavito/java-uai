@@ -93,7 +93,15 @@ public class MateriaService implements IMateriaService{
 		return materiaDAO.getDias();
 	}
 
-	public List<Fecha_Cursada> getPresentismos() {
-		return materiaDAO.getPresentismos();
+	public List<Fecha_Cursada> getPresentismos(Usuario usr) {
+		return materiaDAO.getPresentismos(usr);
+	}
+
+	public void setPresentismo(List<Fecha_Cursada> presentismosSeleccionados,
+			Usuario usr) {
+		for (Fecha_Cursada fecha_Cursada : presentismosSeleccionados) {
+			fecha_Cursada.setPresente(1);
+		}
+		materiaDAO.setPresentismo(presentismosSeleccionados, usr);
 	}
 }

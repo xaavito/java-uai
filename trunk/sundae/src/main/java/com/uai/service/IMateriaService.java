@@ -22,5 +22,8 @@ public interface IMateriaService {
 
 	List<Dia> getDias();
 
-	List<Fecha_Cursada> getPresentismos();
+	List<Fecha_Cursada> getPresentismos(Usuario usuario);
+
+	void setPresentismo(List<Fecha_Cursada> presentismosSeleccionados,
+			Usuario usr);
 }

@@ -90,7 +90,7 @@ public class MateriaBean implements Serializable {
 				.println("INICILIZANDO Presentismo!!!!!-----------------------------------");
 
 		if (null == getPresentismos()) {
-			setPresentismos(getMateriaService().getPresentismos());
+			setPresentismos(getMateriaService().getPresentismos(usuarioBean.getUsr()));
 		}
 		
 		return null;
@@ -225,5 +225,10 @@ public class MateriaBean implements Serializable {
 	public void setPresentismosSeleccionados(
 			List<Fecha_Cursada> presentismosSeleccionados) {
 		this.presentismosSeleccionados = presentismosSeleccionados;
+	}
+	
+	public String savePresentismo() {
+		getMateriaService().setPresentismo(presentismosSeleccionados, usuarioBean.getUsr());
+		return null;
 	}
 }
