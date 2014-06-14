@@ -30,5 +30,8 @@ public interface IMateriaDAO {
 
 	void setFechasCursada(List<Fecha_Cursada> fechasCursadas);
 
-	List<Fecha_Cursada> getPresentismos();
+	List<Fecha_Cursada> getPresentismos(Usuario usr);
+
+	void setPresentismo(List<Fecha_Cursada> presentismosSeleccionados,
+			Usuario usr);
 }
