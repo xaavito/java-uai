@@ -42,28 +42,19 @@ public class ExamenBean {
 	public String getInitializeMisExamenes() {
 		System.out
 				.println("INICILIZANDO Mis Examenes!!!!!-----------------------------------");
-		if (null == getExamenes()) {
 			setExamenes(getExamenService().getExamenes(usuarioBean.getUsr()));
-		}
-		if (null == getCursadaActual()) {
 			setCursadaActual(getExamenService().getCursadaActual(
 					usuarioBean.getUsr()));
-		}
-
-		if (null == getTiposExamen()) {
 			setTiposExamen(getExamenService().getTiposExamen());
-		}
-
+		
 		return null;
 	}
 
 	public String getInitializeExamenes() {
 		System.out
 				.println("INICILIZANDO Mis Examenes!!!!!-----------------------------------");
-		if (null == getExamenes()) {
 			setExamenes(getExamenService().getExamenes(usuarioBean.getUsr()));
-		}
-
+		
 		return null;
 	}
 

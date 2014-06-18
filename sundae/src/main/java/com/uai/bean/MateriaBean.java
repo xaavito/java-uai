@@ -55,17 +55,10 @@ public class MateriaBean implements Serializable {
 	public String getInitializeMaterias() {
 		System.out
 				.println("INICIALIZANDO Materia BEAN!!!!!-----------------------------------");
-		if (null == getMaterias()) {
-			setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
-		}
-		if (null == getAllMaterias()) {
-			setAllMaterias(getMateriaService().getAllMaterias(
-					usuarioBean.getUsr()));
-		}
-		if (null == getDias()) {
-			setDias(getMateriaService().getDias());
-		}
-		
+		setMaterias(getMateriaService().getMaterias(usuarioBean.getUsr()));
+		setAllMaterias(getMateriaService().getAllMaterias(usuarioBean.getUsr()));
+		setDias(getMateriaService().getDias());
+
 		return null;
 	}
 
@@ -74,36 +67,28 @@ public class MateriaBean implements Serializable {
 		System.out
 				.println("INICILIZANDO Cursada!!!!!-----------------------------------");
 
-		if (null == getTiposCursada()) {
-			setTiposCursada(getMateriaService().getTiposCursadas());
-		}
-		if (null == getCursadaActual()) {
-			setCursadaActual(getMateriaService().getCursadaActual(
-					usuarioBean.getUsr()));
-		}
-
+		setTiposCursada(getMateriaService().getTiposCursadas());
+		setCursadaActual(getMateriaService().getCursadaActual(
+				usuarioBean.getUsr()));
 		return null;
 	}
-	
+
 	public String getInitializePresentismo() {
 		System.out
 				.println("INICILIZANDO Presentismo!!!!!-----------------------------------");
 
-		if (null == getPresentismos()) {
-			setPresentismos(getMateriaService().getPresentismos(usuarioBean.getUsr()));
-		}
-		
+			setPresentismos(getMateriaService().getPresentismos(
+					usuarioBean.getUsr()));
 		return null;
 	}
-	
+
 	public String getInitializeMisMaterias() {
 		System.out
 				.println("INICILIZANDO Mis Materias!!!!!-----------------------------------");
-		if (null == materiasCursables) {
 			initializeMateriasCursables();
-		}
 		return null;
 	}
+
 	public IMateriaService getMateriaService() {
 		return materiaService;
 	}
@@ -226,9 +211,10 @@ public class MateriaBean implements Serializable {
 			List<Fecha_Cursada> presentismosSeleccionados) {
 		this.presentismosSeleccionados = presentismosSeleccionados;
 	}
-	
+
 	public String savePresentismo() {
-		getMateriaService().setPresentismo(presentismosSeleccionados, usuarioBean.getUsr());
+		getMateriaService().setPresentismo(presentismosSeleccionados,
+				usuarioBean.getUsr());
 		return null;
 	}
 }
