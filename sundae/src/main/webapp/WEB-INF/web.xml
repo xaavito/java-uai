@@ -16,7 +16,7 @@
 	</context-param>
 	
 	<context-param> 
-	<param-name>javax.faces.CONFIG_FILES</param-name> 
+		<param-name>javax.faces.CONFIG_FILES</param-name> 
 		<param-value> 
 			/WEB-INF/classes/faces-config.xml	
 		</param-value> 
@@ -46,13 +46,7 @@
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>
-    <!--
-    <listener>
-        <listener-class>
-            org.springframework.web.context.request.RequestContextListener
-        </listener-class>
-    </listener>
- 	-->
+    
     <!-- Project Stage Level -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
