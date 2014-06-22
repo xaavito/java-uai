@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Developer -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
     http://www.springframework.org/schema/tx 
@@ -13,32 +11,22 @@
     http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
     http://www.springframework.org/schema/context
   	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
-  	
-  	<!-- 
-	<context:component-scan base-package="com.uai">
-     	<context:include-filter type="aspectj" expression="com.uai.*" />
-	</context:component-scan>
-	
-	
-	<context:component-scan base-package="com.uai"/>
-	<context:component-scan base-package="com.bd.controleur"/>
-	 -->
-	 
-	<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	  <!-- SQLServer Driver -->
-	  <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
 
-      <property name="url" value="jdbc:sqlserver://localhost:1434;databaseName=sundae;" />
-      <property name="username" value="sa" />
-      <property name="password" value="123456" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- SQLServer Driver -->
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+
+		<property name="url"
+			value="jdbc:sqlserver://localhost:1434;databaseName=sundae;" />
+		<property name="username" value="sa" />
+		<property name="password" value="123456" />
 	</bean>
-	
-	<bean id="baseSession"
+
+	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource">
-			<ref bean="dataSource"/>
+			<ref bean="dataSource" />
 		</property>
 		<property name="hibernateProperties">
 			<props>
@@ -46,65 +34,36 @@
 					org.hibernate.dialect.SQLServer2008Dialect
 				</prop>
 				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
-        		<prop key="hibernate.connection.charSet">UTF-8</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.connection.charSet">UTF-8</prop>
 				<prop key="hibernate.connection.useUnicode">true</prop>
 
-				<!--
-				<prop key="hibernate.show_sql">true</prop>
-				
-				<prop key="hibernate.cache.use_second_level_cache">
-					true
-				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
-				
 				<prop key="hibernate.cache.region.factory_class">
-					org.hibernate.cache.jbc2.SharedJBossCacheRegionFactory
+					org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
 				</prop>
-				-->
 			</props>
 		</property>
 		<property name="packagesToScan" value="com.uai.model" />
 	</bean>
-	
-	<bean class="com.uai.bean.BaseBean" id="baseBean" scope="session"/>
-	
-	<bean class="com.uai.bean.UsuarioBean" id="usuarioBean" scope="session"/>
-	<bean class="com.uai.model.Usuario" id="usuario" scope="session"/>
-	<bean class="com.uai.dao.UsuarioDAO" id="usuarioDAO" scope="session"/>
-	<bean class="com.uai.service.UsuarioService" id="usuarioService" scope="session"/>
-	
-	<bean class="com.uai.bean.CalendarioBean" id="calendarioBean" scope="session"/>
-	<bean class="com.uai.service.CalendarioService" id="calendarioService" scope="session"/>
-	<bean class="com.uai.model.Calendario" id="calendario" scope="session"/>
-	<bean class="com.uai.dao.CalendarioDAO" id="calendarioDAO" scope="session"/>
-	
-	<bean class="com.uai.bean.NavigationBean" id="navigationBean" scope="session"/>
-	
-	<bean class="com.uai.bean.CarreraBean" id="carreraBean" scope="session"/>
-	<bean class="com.uai.service.CarreraService" id="carreraService" scope="session"/>
-	<bean class="com.uai.model.Carrera" id="carrera" scope="session"/>
-	<bean class="com.uai.dao.CarreraDAO" id="carreraDAO" scope="session"/>
-	
-	
-	<bean class="com.uai.bean.ExamenBean" id="examenBean" scope="session"/>
-	<bean class="com.uai.service.ExamenService" id="examenService" scope="session"/>
-	<bean class="com.uai.model.Examen" id="examen" scope="session"/>
-	<bean class="com.uai.dao.ExamenDAO" id="examenDAO" scope="session"/>
-	
-	<bean class="com.uai.bean.MateriaBean" id="materiaBean" scope="session"/>
-	<bean class="com.uai.service.MateriaService" id="materiaService" scope="session"/>
-	<bean class="com.uai.model.Materia" id="materia" scope="session"/>
-	<bean class="com.uai.dao.MateriaDAO" id="materiaDAO" scope="session"/>
-	
+
+	<context:annotation-config />
+
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<context:component-scan base-package="com.uai" />
+
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="baseSession" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+  
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-		<property name="sessionFactory" ref="baseSession" />
-	</bean>
-	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

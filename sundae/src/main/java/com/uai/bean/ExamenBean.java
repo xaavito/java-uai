@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.uai.model.Cursada;
 import com.uai.model.Examen;
@@ -16,6 +17,7 @@ import com.uai.service.IExamenService;
 
 @Named("examenBean")
 @Scope("session")
+@Component
 public class ExamenBean {
 	// Spring User Service is injected...
 	@Inject

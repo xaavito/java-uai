@@ -8,6 +8,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Component;
 
 import com.uai.model.Carrera;
 import com.uai.model.Cursada;
@@ -15,6 +16,7 @@ import com.uai.service.ICarreraService;
 
 @Named("carreraBean")
 @Scope("session")
+@Component
 public class CarreraBean {
 	//Spring User Service is injected...
     @Inject

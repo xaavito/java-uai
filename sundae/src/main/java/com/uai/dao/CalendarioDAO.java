@@ -18,7 +18,7 @@ import com.uai.model.Usuario;
 public class CalendarioDAO implements ICalendarioDAO {
 
 	@Inject
-	@Named("baseSession")
+	@Named("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	/**

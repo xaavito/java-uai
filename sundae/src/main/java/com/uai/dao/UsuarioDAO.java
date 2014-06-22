@@ -17,7 +17,7 @@ import com.uai.model.Usuario;
 public class UsuarioDAO implements IUsuarioDAO{
 
 	@Inject
-	@Named("baseSession")
+	@Named("sessionFactory")
 	private SessionFactory sessionFactory;
 	 
     /**
