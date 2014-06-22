@@ -14,12 +14,14 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.uai.model.Examen;
 import com.uai.service.ICalendarioService;
 
 @Named("calendarioBean")
 @Scope("session")
+@Component
 public class CalendarioBean extends BaseBean implements Serializable {  
     
 	

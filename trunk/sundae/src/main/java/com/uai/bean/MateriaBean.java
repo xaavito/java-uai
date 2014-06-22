@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.uai.estatico.Tipo_Examen_Enum;
 import com.uai.model.Cursada;
@@ -21,6 +22,7 @@ import com.uai.service.IMateriaService;
 
 @Named("materiaBean")
 @Scope("session")
+@Component
 public class MateriaBean implements Serializable {
 	/**
 	 * 

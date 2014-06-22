@@ -9,11 +9,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Component;
 
 import com.uai.service.IUsuarioService;
 
 @Named("usuarioBean")
 @Scope("session")
+@Component
 public class UsuarioBean extends BaseBean implements Serializable {
 
 	

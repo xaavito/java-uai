@@ -19,7 +19,7 @@ import com.uai.model.Usuario;
 public class ExamenDAO implements IExamenDAO {
 
 	@Inject
-	@Named("baseSession")
+	@Named("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	/**

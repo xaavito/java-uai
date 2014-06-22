@@ -18,7 +18,7 @@ import com.uai.model.Usuario;
 public class CarreraDAO implements ICarreraDAO {
 
 	@Inject
-	@Named("baseSession")
+	@Named("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	/**

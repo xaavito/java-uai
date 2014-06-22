@@ -6,11 +6,13 @@ import javax.inject.Named;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.uai.model.Usuario;
 
 @Named("baseBean")
 @Scope("session")
+@Component
 public class BaseBean implements Serializable{
 	
 	/**

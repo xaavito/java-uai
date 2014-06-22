@@ -22,7 +22,7 @@ import com.uai.model.Usuario;
 public class MateriaDAO implements IMateriaDAO {
 
 	@Inject
-	@Named("baseSession")
+	@Named("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	/**

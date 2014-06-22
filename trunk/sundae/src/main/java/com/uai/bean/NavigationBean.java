@@ -5,9 +5,11 @@ import javax.inject.Named;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 @Named("navigationBean")
 @Scope("session")
+@Component
 public class NavigationBean extends BaseBean {
 
 	/**
