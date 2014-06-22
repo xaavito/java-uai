@@ -15,9 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import com.uai.estatico.Estado_Materia_Enum;
 import com.uai.estatico.Tipo_Examen_Enum;
 
@@ -67,11 +64,11 @@ public class Materia {
 		this.plan = plan;
 	}
 
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="Materia_Correlatividad", 
                 joinColumns={@JoinColumn(name="idMateria")}, 
                 inverseJoinColumns={@JoinColumn(name="idMateriaCorr")})
-	@Fetch(value=FetchMode.SUBSELECT)
+	//@Fetch(value=FetchMode.SUBSELECT)
 	public List<Materia> getMateriasCoRelativas() {
 		return materiasCoRelativas;
 	}
@@ -81,8 +78,8 @@ public class Materia {
 		this.materiasCoRelativas = materiasPreRelativas;
 	}
 	
-	@ManyToMany(mappedBy="materiasCoRelativas", fetch=FetchType.EAGER)
-	@Fetch(value=FetchMode.SUBSELECT)
+	@ManyToMany(mappedBy="materiasCoRelativas", fetch=FetchType.LAZY)
+	//@Fetch(value=FetchMode.SUBSELECT)
 	public List<Materia> getMateriasPreRelativas() {
 		return materiasPreRelativas;
 	}
@@ -127,8 +124,8 @@ public class Materia {
 		this.estado = estado;
 	}
 
-	@OneToMany(mappedBy="materia", fetch=FetchType.EAGER)
-	@Fetch(value=FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="materia", fetch=FetchType.LAZY)
+	//@Fetch(value=FetchMode.SUBSELECT)
 	public List<Cursada> getCursadas() {
 		return cursadas;
 	}
