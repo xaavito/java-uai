@@ -11,7 +11,8 @@
 	#{carreraBean.initializeMisMaterias}
 	<p:dataTable var="cursada" value="#{carreraBean.materiasFull}">
 		<p:column headerText="Facultad">
-			<h:outputText value="#{cursada.materia.plan.carrera.universidad.nombre}" />
+			<h:outputText
+				value="#{cursada.materia.plan.carrera.universidad.nombre}" />
 		</p:column>
 
 		<p:column headerText="Carrera">
@@ -21,7 +22,7 @@
 		<p:column headerText="Materia">
 			<h:outputText value="#{cursada.materia.nombre}" />
 		</p:column>
-		
+
 		<p:column headerText="Fecha Cursada">
 			<h:outputText value="#{cursada.fechaInicioCursada}" />
 		</p:column>
@@ -29,15 +30,15 @@
 		<p:column headerText="Parcial 1">
 			<h:outputText value="#{cursada.primerExamen}" />
 		</p:column>
-		
+
 		<p:column headerText="Parcial 2">
 			<h:outputText value="#{cursada.segundoExamen}" />
 		</p:column>
-		
+
 		<p:column headerText="Recup materia">
 			<h:outputText value="#{cursada.recuperatorioExamen}" />
 		</p:column>
-		
+
 		<p:column headerText="Nota Final">
 			<h:outputText value="#{cursada.finalExamen}" />
 		</p:column>
