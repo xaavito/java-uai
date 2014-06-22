@@ -13,9 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import com.uai.estatico.Tipo_Examen_Enum;
 
 @Entity
@@ -99,8 +96,8 @@ public class Cursada {
 		this.tipo_cursada = tipo_cursada;
 	}
 
-	@OneToMany(mappedBy="cursada", fetch=FetchType.EAGER)
-	@Fetch(value=FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="cursada", fetch=FetchType.LAZY)
+	//@Fetch(value=FetchMode.SUBSELECT)
 	public List<Examen> getExamenes() {
 		return examenes;
 	}

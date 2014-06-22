@@ -9,9 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 @Entity
 public class Tipo_Examen {
 	private int idTipoExamen;
@@ -39,7 +36,7 @@ public class Tipo_Examen {
 	}
 
 	@OneToMany(mappedBy="tipoExamen", fetch=FetchType.EAGER)
-	@Fetch(value=FetchMode.SUBSELECT)
+	//@Fetch(value=FetchMode.SUBSELECT)
 	public List<Examen> getExamenes() {
 		return examenes;
 	}
